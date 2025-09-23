@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>iSKOLAR Login</title>
+  <link rel="stylesheet" href="{% static 'login.css' %}">
+</head>
+<body>
+
+  <div class="background"></div>
+
+  <div class="login-wrapper">
+
+    <!-- Logo is now outside the card -->
+    <div class="logo">
+      <img src="https://img.icons8.com/ios-filled/50/graduation-cap.png" alt="iSKOLAR Logo" />
+      <h1>iSKOLAR</h1>
+      <p class="subtitle">Access your academic workspace</p>
+      <div class="highlight-bar"></div>
+    </div>
+
+    <div class="login-card">
+      <h2>Welcome, Scholars</h2>
+      <p class="desc">Sign in to continue your scholarly journey</p>
+
+      <form>
+        <label>Email Address <span class="required">*</span></label>
+        <input type="email" placeholder="studentexample@gmail.com" required />
+
+        <label>Password <span class="required">*</span></label>
+        <input type="password" placeholder="Enter your password" required />
+
+        <div class="options">
+          <label><input type="checkbox" /> Remember me</label>
+          <a href="#">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="login-btn">Access Your Scholar Portal</button>
+
+        <div class="divider"><span>OR CONTINUE WITH</span></div>
+
+        <button type="button" class="google-btn">
+          <img src="https://img.icons8.com/color/16/google-logo.png" alt="Google logo" />
+          Continue with Google
+        </button>
+
+        <p class="register">New scholar? <a href="#">Create Account</a></p>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
