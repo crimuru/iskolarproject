@@ -6,15 +6,50 @@
   font-family: 'Segoe UI', sans-serif;
 }
 
+:root {
+    /* Color System */
+    --background: hsl(220, 20%, 98%);
+    --foreground: hsl(215, 25%, 15%);
+    --card: hsl(0, 0%, 100%);
+    --card-foreground: hsl(215, 25%, 15%);
+    --primary: hsl(210, 100%, 45%);
+    --primary-foreground: hsl(0, 0%, 100%);
+    --secondary: hsl(185, 100%, 96%);
+    --secondary-foreground: hsl(210, 100%, 40%);
+    --muted: hsl(210, 30%, 95%);
+    --muted-foreground: hsl(215, 15%, 50%);
+    --accent: hsl(45, 100%, 70%);
+    --accent-foreground: hsl(215, 25%, 15%);
+    --success: hsl(145, 60%, 50%);
+    --success-foreground: hsl(0, 0%, 100%);
+    --destructive: hsl(0, 84%, 60%);
+    --destructive-foreground: hsl(210, 40%, 98%);
+    --border: hsl(210, 25%, 90%);
+    --input: hsl(210, 25%, 90%);
+    --ring: hsl(210, 100%, 45%);
+
+    /* Design Tokens */
+    --shadow-elegant: 0 10px 40px -10px hsl(210, 100%, 45%, 0.2);
+    --shadow-glow: 0 0 30px hsl(210, 100%, 60%, 0.3);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --gradient-hero: linear-gradient(135deg, hsl(210, 100%, 45%), hsl(185, 100%, 60%));
+    --gradient-subtle: linear-gradient(180deg, hsl(220, 20%, 98%), hsl(185, 100%, 98%));
+
+    /* Typography */
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --radius: 0.5rem;
+}
+
 /* Background Image */
 .background {
   position: fixed;
   inset: 0;
-  background-image: url('images/bg.png');
+  background-image: url('images/students.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  filter: blur(4px);
+  opacity: 0.2;
+  filter: blur(5px);
   z-index: -1;
 }
 
@@ -28,19 +63,29 @@
   padding: 2rem;
 }
 
+.text-gradient {
+    position: relative;
+    background: var(--gradient-hero);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: bold;
+}
+
 /* Logo Section - now outside the card */
 .logo {
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 .logo img {
+  position: absolute;
   width: 40px;
+  margin-bottom: 10px;
+  top: 12%;
+  margin-left: 25px;
 }
-.logo h1 {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #8B1C2F;
-}
+
 .subtitle {
   font-size: 0.9rem;
   color: #666;
@@ -116,17 +161,19 @@ form input[type="password"] {
 /* Buttons */
 .login-btn {
   width: 100%;
-  background-color: #8B1C2F;
+  background: var(--gradient-hero);
   color: white;
   padding: 0.75rem;
   font-weight: 600;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  margin-bottom: 1.5rem;
+  transition: background 0.2s;
 }
+
 .login-btn:hover {
-  background-color: #a51e38;
+   background: var(--ring);
+   color: white;
 }
 
 /* Divider */
@@ -152,24 +199,6 @@ form input[type="password"] {
   left: 0;
   background: #ccc;
   z-index: 0;
-}
-
-/* Google Button */
-.google-btn {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #fff;
-  cursor: pointer;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-.google-btn:hover {
-  background-color: #f9f9f9;
 }
 
 /* Register */
