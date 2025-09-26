@@ -219,3 +219,144 @@ form input:focus {
   text-decoration: underline;
 }
 
+/* Keep your original CSS but adjust spacing for compactness */
+
+/* Card */
+.login-card {
+  background-color: white;
+  max-width: 500px;
+  width: 100%;
+  border-radius: 12px;
+  padding: 1.5rem; /* tighter than original 2rem */
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  position: relative; /* for X button */
+}
+
+/* X Close Button */
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #b91c1c;
+  text-decoration: none;
+  cursor: pointer;
+  z-index: 10;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.close-btn:hover {
+  color: #fff;
+  background-color: #b91c1c;
+  border-radius: 50%;
+  padding: 2px 6px;
+  transform: scale(1.1);
+}
+
+/* Titles */
+.login-card h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem; /* tighter */
+  text-align: center;
+}
+.desc {
+  font-size: 0.9rem;
+  color: #555;
+  text-align: center;
+  margin-bottom: 1rem; /* tighter */
+}
+
+/* Form labels & inputs spacing */
+form label {
+  display: block;
+  margin-bottom: 0.3rem; /* tighter */
+  font-weight: 500;
+}
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+  width: 100%;
+  padding: 0.65rem; /* tighter */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  margin-bottom: 0.8rem; /* tighter */
+  transition: border 0.2s, box-shadow 0.2s;
+}
+form input:focus {
+  border-color: var(--ring);
+  box-shadow: var(--gradient-hero);
+  outline: none;
+}
+
+/* Options and register link spacing */
+.options {
+  font-size: 0.85rem;
+  margin-bottom: 0.8rem; /* tighter */
+}
+.options input[type="checkbox"] {
+  margin-right: 6px;
+  accent-color: #8B1C2F; 
+}
+.options a {
+  color: #b91c1c;
+  text-decoration: none;
+}
+.options a:hover {
+  text-decoration: underline;
+}
+
+.login-btn {
+  width: 100%;
+  background: var(--gradient-hero);
+  color: white;
+  padding: 0.75rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.login-btn:hover {
+   background: var(--ring);
+   color: white;
+}
+
+.divider {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #888;
+  margin: 1rem 0;
+  position: relative;
+}
+.divider span {
+  background: #fff;
+  padding: 0 10px;
+  position: relative;
+  z-index: 1;
+}
+.divider::before {
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  background: #ccc;
+  z-index: 0;
+}
+
+.register {
+  font-size: 0.85rem;
+  text-align: center;
+  margin-top: 1rem; /* tighter */
+}
+.register a {
+  color: #b91c1c;
+  font-weight: 600;
+  text-decoration: none;
+}
+.register a:hover {
+  text-decoration: underline;
+}
