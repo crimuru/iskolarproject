@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>iSKOLAR Login</title>
-  <link rel="stylesheet" href="{% static 'login1.css' %}">
+  <link rel="stylesheet" href="{% static 'signup.css' %}"> <!-- Use signup.css for matching style -->
 </head>
 <body>
 
@@ -21,6 +21,9 @@
     </div>
 
     <div class="login-card">
+      <!-- X button -->
+      <a href="{% url 'iSKOLARapp' %}" class="close-btn">&times;</a>
+
       <h2>Welcome, Scholars</h2>
       <p class="desc">Sign in to continue your scholarly journey</p>
 
@@ -41,7 +44,7 @@
 
         <div class="divider"><span>OR CONTINUE WITH</span></div>
 
-        <p class="register">New scholar? <a href="{% url 'signup' %}">Create Account</a></p>
+        <p class="register">New scholar? <a href="{% url 'profile' %}">Create Account</a></p>
       </form>
     </div>
   </div>

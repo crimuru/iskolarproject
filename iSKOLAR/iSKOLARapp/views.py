@@ -5,6 +5,7 @@ from django.contrib import messages
 
 # Create your views here.
 def iSKOLARapp_view(request):
+    
     return render(request, "iskolar.html")
 def login_view(request):
     if request.method == "POST":
@@ -41,3 +42,6 @@ def signup_view(request):
     return render(request, "signup.html")
 def homepage_view(request):
     return render(request, "homepage.html")
+def profile_view(request):
+    return render(request, "profile.html")
+
