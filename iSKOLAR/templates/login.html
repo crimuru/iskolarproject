@@ -25,7 +25,8 @@
       <h2>Welcome, Scholars</h2>
       <p class="desc">Sign in to continue your scholarly journey</p>
 
-      <form>
+      <form method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
         <label>Email Address <span class="required">*</span></label>
         <input type="email" placeholder="studentexample@gmail.com" required />
 
@@ -41,7 +42,7 @@
 
         <div class="divider"><span>OR CONTINUE WITH</span></div>
 
-        <p class="register">New scholar? <a href="#">Create Account</a></p>
+        <p class="register">New scholar? <a href="{% url 'signup' %}">Create Account</a></p>
       </form>
     </div>
   </div>

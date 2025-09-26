@@ -26,7 +26,8 @@
       <h2>Create Your Scholar Account</h2>
       <p class="desc">Fill in the details below to get started</p>
 
-      <form>
+      <form method="POST" action="{% url 'register' %}">
+        {% csrf_token %}
         <!-- First & Last Name -->
         <label>First Name <span class="required">*</span></label>
         <input type="text" placeholder="Juan" required />
@@ -57,7 +58,7 @@
         <button type="submit" class="login-btn">Register Now</button>
 
         <!-- Already Have Account -->
-        <p class="register">Already a scholar? <a href="#">Login here</a></p>
+        <p class="register">Already a scholar? <a href="{% url 'login' %}">Login here</a></p>
       </form>
     </div>
   </div>
