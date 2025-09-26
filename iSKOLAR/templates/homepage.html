@@ -1,0 +1,276 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholarship Portal - Dashboard</title>
+    <meta name="description" content="Academic scholarship management portal for students to discover and apply for educational funding opportunities.">
+    <link rel="stylesheet" href="{% static 'homepage.css' %}">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <!-- Left: Logo/Image Icon -->
+            <div class="header-left">
+                <img src="images/logo.png" alt="Logo" class="logo-icon">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                </svg>
+            </div>
+
+            <!-- Center: Search Bar -->
+            <div class="header-center">
+                <div class="search-container">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="m21 21-4.35-4.35"/>
+                    </svg>
+                    <input type="search" placeholder="Search scholarships..." class="search-input">
+                </div>
+            </div>
+
+            <!-- Right: Profile Icon -->
+            <div class="header-right">
+                <button class="profile-btn">
+                    <svg class="profile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header">
+            <h2 class="sidebar-title">Menu</h2>
+            <button class="close-btn" id="closeSidebarBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="m18 6-12 12"/>
+                    <path d="m6 6 12 12"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Sidebar Content -->
+        <div class="sidebar-content">
+            <button class="sidebar-btn">
+                <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="8" r="7"/>
+                    <polyline points="8.21,13.89 7,23 12,20 17,23 15.79,13.88"/>
+                </svg>
+                Scholarships
+            </button>
+
+            <button class="sidebar-btn">
+                <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+                    <polyline points="14,2 14,8 20,8"/>
+                </svg>
+                Applications
+            </button>
+        </div>
+    </aside>
+
+    <!-- Menu Toggle Button -->
+    <button class="menu-toggle" id="menuToggleBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="4" x2="20" y1="6" y2="6"/>
+            <line x1="4" x2="20" y1="12" y2="12"/>
+            <line x1="4" x2="20" y1="18" y2="18"/>
+        </svg>
+    </button>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="content-container">
+            <!-- Welcome Section -->
+            <div class="welcome-section">
+            <div class="welcome-box">
+                <h1 class="main-title">Welcome Future Scholars!</h1>
+                <p class="main-subtitle">Discover and apply for scholarships that match your academic goals.</p>
+            </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-content">
+                <div class="stat-icon-container stat-icon-blue">
+                    <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="8" r="7"/>
+                    <polyline points="8.21,13.89 7,23 12,20 17,23 15.79,13.88"/>
+                    </svg>
+                </div>
+                <div class="stat-text">
+                    <p class="stat-label">Available</p>
+                    <p class="stat-value">24</p>
+                </div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-content">
+                <div class="stat-icon-container stat-icon-blue">
+                    <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+                    <polyline points="14,2 14,8 20,8"/>
+                    </svg>
+                </div>
+                <div class="stat-text">
+                    <p class="stat-label">Applied</p>
+                    <p class="stat-value">8</p>
+                </div>
+                </div>
+            </div>
+            </div>
+
+
+            <!-- Scholarships Section -->
+            <div class="scholarships-section">
+                <h2 class="section-title">Featured Scholarships</h2>
+                
+                <div class="scholarships-grid">
+                    <!-- Scholarship Card 1 -->
+                    <div class="scholarship-card">
+                        <div class="scholarship-content">
+                            <div class="scholarship-info">
+                                <h3 class="scholarship-title">Merit Excellence Scholarship</h3>
+                                <p class="scholarship-description">
+                                    For outstanding academic achievement and leadership potential.
+                                </p>
+                                
+                                <div class="scholarship-meta">
+                                    <div class="meta-item meta-amount">
+                                        <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="12" y1="1" x2="12" y2="23"/>
+                                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                        </svg>
+                                        $5,000
+                                    </div>
+                                    <div class="meta-item meta-deadline">
+                                        <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <polyline points="12,6 12,12 16,14"/>
+                                        </svg>
+                                        Due March 15, 2024
+                                    </div>
+                                    <div class="meta-item meta-applicants">
+                                        <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                            <circle cx="9" cy="7" r="4"/>
+                                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                        </svg>
+                                        245 applied
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="scholarship-actions">
+                                <button class="btn btn-outline">View Details</button>
+                                <button class="btn btn-primary">Apply Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scholarship Card 2 -->
+                    <div class="scholarship-card">
+                        <div class="scholarship-content">
+                            <div class="scholarship-info">
+                                <h3 class="scholarship-title">STEM Innovation Grant</h3>
+                                <p class="scholarship-description">
+                                    Supporting students pursuing science, technology, engineering, or mathematics.
+                                </p>
+                                
+                                <div class="scholarship-meta">
+                                    <div class="meta-item meta-amount">
+                                        <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="12" y1="1" x2="12" y2="23"/>
+                                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                        </svg>
+                                        $3,500
+                                    </div>
+                                    <div class="meta-item meta-deadline">
+                                        <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <polyline points="12,6 12,12 16,14"/>
+                                        </svg>
+                                        Due April 20, 2024
+                                    </div>
+                                    <div class="meta-item meta-applicants">
+                                        <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                            <circle cx="9" cy="7" r="4"/>
+                                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                        </svg>
+                                        189 applied
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="scholarship-actions">
+                                <button class="btn btn-outline">View Details</button>
+                                <button class="btn btn-primary">Apply Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scholarship Card 3 -->
+                    <div class="scholarship-card">
+                        <div class="scholarship-content">
+                            <div class="scholarship-info">
+                                <h3 class="scholarship-title">Community Service Award</h3>
+                                <p class="scholarship-description">
+                                    Recognizing exceptional community involvement and volunteer work.
+                                </p>
+                                
+                                <div class="scholarship-meta">
+                                    <div class="meta-item meta-amount">
+                                        <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="12" y1="1" x2="12" y2="23"/>
+                                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                        </svg>
+                                        $2,000
+                                    </div>
+                                    <div class="meta-item meta-deadline">
+                                        <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <polyline points="12,6 12,12 16,14"/>
+                                        </svg>
+                                        Due May 10, 2024
+                                    </div>
+                                    <div class="meta-item meta-applicants">
+                                        <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                            <circle cx="9" cy="7" r="4"/>
+                                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                        </svg>
+                                        156 applied
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="scholarship-actions">
+                                <button class="btn btn-outline">View Details</button>
+                                <button class="btn btn-primary">Apply Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

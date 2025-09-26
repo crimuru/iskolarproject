@@ -11,7 +11,7 @@ def login_view(request):
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
-        user = authenticate(request, username=email, password=password)
+        user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
             return redirect("homepage")
@@ -31,10 +31,10 @@ def signup_view(request):
             messages.error(request, "Passwords do not match")
             return redirect("signup")
         
-        if User.objects.filter(email=email).exists():
+        if User.objects.filter(username=email).exists() or User.objects.filter(email=email).exists():
             messages.error(request, "Email already exists")
             return redirect("signup")
-        
+
         user = User.objects.create_user(username=email, email=email, password=password1, first_name=first_name, last_name=last_name)
         user.save()
         messages.success(request, "Account created successfully! Please log in.")
