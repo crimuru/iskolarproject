@@ -27,32 +27,42 @@
       <h2>Create Your Scholar Account</h2>
       <p class="desc">Fill in the details below to get started</p>
 
-      <form>
+      <form method="POST" action="{% url 'signup' %}">
+        {% csrf_token %}
+
+        <!-- First & Last Name -->
         <label>First Name <span class="required">*</span></label>
-        <input type="text" placeholder="Juan" required />
+        <input type="text" name="first_name" placeholder="Juan" required />
 
         <label>Last Name <span class="required">*</span></label>
-        <input type="text" placeholder="Santos" required />
+        <input type="text" name="last_name" placeholder="Santos" required />
 
+        <!-- Email -->
         <label>Email Address <span class="required">*</span></label>
-        <input type="email" placeholder="studentexample@gmail.com" required />
+        <input type="email" name="email" placeholder="studentexample@gmail.com" required />
 
+        <!-- Password -->
         <label>Password <span class="required">*</span></label>
-        <input type="password" placeholder="Create a strong password" required />
+        <input type="password" name="password1" placeholder="Create a strong password" required />
 
+        <!-- Confirm Password -->
         <label>Confirm Password <span class="required">*</span></label>
-        <input type="password" placeholder="Re-enter your password" required />
+        <input type="password" name="password2" placeholder="Re-enter your password" required />
 
+        <!-- Terms -->
         <div class="options">
           <label><input type="checkbox" required /> I agree to the 
             <a href="#">Terms of Service</a> & <a href="#">Privacy Policy</a>
           </label>
         </div>
 
+        <!-- Register Button -->
         <button type="submit" class="login-btn">Register Now</button>
 
+        <!-- Already Have Account -->
         <p class="register">Already a scholar? <a href="{% url 'login' %}">Login here</a></p>
       </form>
+
     </div>
   </div>
 
