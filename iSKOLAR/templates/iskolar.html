@@ -13,30 +13,29 @@
     <meta property="og:description" content="Centralized scholarship platform for Filipino students. Find and apply for scholarships easily with iSKOLAR.">
     <meta property="og:type" content="website">
     
-    <link rel="stylesheet" href="{% static 'iskolar.css' %}">
+    <link rel="stylesheet" href="{% static 'iskolar.css' %}?=v2">
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
+
 <body>
     <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <div class="logo-icon">
-                        <span>iS</span>
-                    </div>
-                    <span class="logo-text">iSKOLAR</span>
-                </div>
-                
-                <nav class="nav">
-                    <a href="#features">Features</a>
-                    <a href="#about">About</a>
-                    <a href="#contact">Contact</a>
-                </nav>
+        <div class="container header-content">
+            <!-- Logo -->
+            <div class="logo">
+                <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo-img">
+            </div>
 
-                <div class="auth-buttons">
-                    <a href="{% url 'login' %}" class="btn btn-ghost btn-sm">Login</a>
-                    <a href="{% url 'signup' %}" class="btn btn-hero btn-sm">Sign Up</a>
-                </div>
+            <!-- Navigation -->
+            <nav class="nav">
+                <a href="#features">Features</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <!-- Auth Buttons -->
+            <div class="auth-buttons">
+                <a href="{% url 'login' %}" class="btn btn-ghost btn-sm">Login</a>
+                <a href="{% url 'signup' %}" class="btn btn-hero btn-sm">Sign Up</a>
             </div>
         </div>
     </header>
@@ -49,13 +48,7 @@
             <div class="floating-element floating-3"></div>
         </div>
         
-        <div class="container">
-            <div class="hero-content">
-                <div class="trust-badge">
-                    <i data-lucide="star"></i>
-                    <span>Trusted by 1000+ Students</span>
-                </div>
-
+        <div class="hero-content container">
                 <h1 class="hero-title">
                     <span class="text-normal">Find Your Dream</span><br>
                     <span class="text-gradient">Scholarship</span><br>
@@ -68,22 +61,6 @@
                     for Filipino students in one easy-to-use platform.
                 </p>
 
-                <!-- Stats -->
-                <div class="stats">
-                    <div class="stat">
-                        <div class="stat-number primary">500+</div>
-                        <div class="stat-label">Scholarships</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number accent">₱2.5M+</div>
-                        <div class="stat-label">Total Worth</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number success">95%</div>
-                        <div class="stat-label">Success Rate</div>
-                    </div>
-                </div>
-
                 <!-- Call to Action -->
                 <div class="hero-cta">
                     <button class="btn btn-hero btn-xl">
@@ -94,19 +71,6 @@
                         <i data-lucide="search"></i>
                         Browse Scholarships
                     </button>
-                </div>
-
-                <!-- Trust Indicators -->
-                <div class="trust-indicators">
-                    <div class="trust-item">
-                        <i data-lucide="users"></i>
-                        <span>1,200+ Active Students</span>
-                    </div>
-                    <div class="trust-item">
-                        <i data-lucide="graduation-cap"></i>
-                        <span>50+ Partner Schools</span>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -169,6 +133,72 @@
             </div>
         </div>
     </section>
+
+    <section id="about" class="problem-solution">
+        <div class="container">
+            <div class="section-header">
+                <h2>About <span class="text-gradient">iSKOLAR</span></h2>
+                <p>At iSKOLAR, we believe every Filipino student deserves equal access to education. Our platform is designed to simplify the scholarship search and application process by gathering opportunities from various sources into one easy-to-use hub. We help students save time, stay organized, and never miss a deadline, empowering them to focus on their dreams. Whether you’re seeking financial assistance for college or exploring options to support your studies, iSKOLAR is here to guide you every step of the way toward a brighter future.</p>
+            </div>    
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Brand -->
+                <div class="footer-brand">
+                    <div class="logo">
+                        <div class="logo-icon">
+                        </div>
+                        <h2><span class="text-gradient">iSKOLAR</span></h2>
+                    </div>
+                    <p>Empowering Filipino students to find and apply for scholarships through our centralized, easy-to-use platform.</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="#features">Features</a>
+                        <a href="#about">About Us</a>
+                        <!-- <a href="#scholarships">Browse Scholarships</a> -->
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i data-lucide="mail"></i>
+                            <span>support@iskolar.ph</span>
+                        </div>
+                        <div class="contact-item">
+                            <i data-lucide="phone"></i>
+                            <span>+63 917 123 4567</span>
+                        </div>
+                        <div class="contact-item">
+                            <i data-lucide="map-pin"></i>
+                            <span>Cebu City, Philippines</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <i data-lucide="graduation-cap"></i>
+                    <span>© 2024 iSKOLAR. All rights reserved.</span>
+                </div>
+                <div class="footer-heart">
+                    <span>Made with ❤️ for Filipino Students</span>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script>
         lucide.createIcons();

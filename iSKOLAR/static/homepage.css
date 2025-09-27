@@ -58,6 +58,9 @@ body {
     left: 0;
     right: 0;
     z-index: 50;
+    height: 64px;
+    background-color: var(--background);
+    border-bottom: 1px solid var(--secondary);
     height: 80px;
     background-color: rgb(241, 252, 255);
     border-bottom: 1px solid var(--header-border);
@@ -74,10 +77,11 @@ body {
 .header-left {
     display: flex;
     align-items: center;
+    margin-left: -12px;
 }
 
 .logo-icon {
-    height: 90px;
+    height: 80px;
     width: auto;
     object-fit: contain;
     margin: 0 8px;
