@@ -4,6 +4,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeSidebarBtn = document.getElementById('closeSidebarBtn');
     const sidebar = document.getElementById('sidebar');
     const sidebarOverlay = document.getElementById('sidebarOverlay');
+    const profileToggle = document.getElementById('profileToggle');
+    const profileDropdown = document.getElementById('profileDropdown');
+
+    // Profile dropdown toggle
+    profileToggle.addEventListener('click', function(event) {
+        event.stopPropagation();
+        profileDropdown.style.display = profileDropdown.style.display === 'block' ? 'none' : 'block';
+    });
+    document.addEventListener('click', function() {
+        profileDropdown.style.display = 'none';
+    });
+    profileDropdown.addEventListener('click', function(event) {
+        event.stopPropagation();
+    });
 
     // Function to open sidebar
     function openSidebar() {
@@ -87,6 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.transform = 'translateY(0)';
         });
     });
+    
 });
 
 // Utility function for future expansions
@@ -94,3 +109,4 @@ function showToast(message, type = 'info') {
     console.log(`${type.toUpperCase()}: ${message}`);
     // This could be expanded to show actual toast notifications
 }
+

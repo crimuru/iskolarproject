@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scholarship Portal - Dashboard</title>
+    <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
+
     <meta name="description" content="Academic scholarship management portal for students to discover and apply for educational funding opportunities.">
     <link rel="stylesheet" href="{% static 'homepage.css' %}?=v2">
 </head>
@@ -12,7 +14,7 @@
     <!-- Header -->
     <header class="header">
         <div class="header-content">
-            <!-- Left: Logo/Image Icon -->
+            <!-- Left: Logo -->
             <div class="header-left">
                 <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo-icon">
                     <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
@@ -31,16 +33,35 @@
                 </div>
             </div>
 
-            <!-- Right: Profile Icon -->
-            <div class="header-right">
-                <button class="profile-btn">
-                    <svg class="profile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                        <circle cx="12" cy="7" r="4"/>
-                    </svg>
-                </button>
-            </div>
+            <!-- Profile Button -->
+    <div class="header-right">
+    <button class="profile-btn" id="profileToggle">
+        <img src="{% static 'images/students.jpg' %}" alt="Avatar" class="avatar" style="width:32px;height:32px;border-radius:50%;">
+    </button>
+    <div class="profile-dropdown" id="profileDropdown" style="display: none;">
+        <div class="profile-header">
+        <img src="{% static 'images/students.jpg' %}" alt="Avatar" class="avatar" style="width:56px;height:56px;">
+        <div>
+            <div class="profile-name">{{ user.first_name}}</div>
+            <div class="profile-email">{{ user.email }}</div>
+            
         </div>
+        </div>
+    <ul class="profile-menu">
+      <li>
+        <a href="#">View Profile<br><small>See your profile information</small></a>
+      </li>
+      <li>
+        <a href="{% url 'profile' %}">Edit Profile<br><small>Update your information</small></a>
+      </li>
+      <li>
+        <a href="#">Settings<br><small>Manage your preferences</small></a>
+      </li>
+    </ul>
+    <hr>
+    <a href="{% url 'login' %}" class="logout-link"><span class="icon">↩</span> Log Out<br><small>Sign out of your account</small></a>
+  </div>
+</div>
     </header>
 
     <!-- Sidebar Overlay -->
@@ -93,60 +114,57 @@
         <div class="content-container">
             <!-- Welcome Section -->
             <div class="welcome-section">
-            <div class="welcome-box">
-                <h1 class="main-title">Welcome Future Scholars!</h1>
-                <p class="main-subtitle">Discover and apply for scholarships that match your academic goals.</p>
-            </div>
+                <div class="welcome-box">
+                    <h1 class="main-title">Welcome Future Scholars!</h1>
+                    <p class="main-subtitle">Discover and apply for scholarships that match your academic goals.</p>
+                </div>
             </div>
 
             <!-- Stats Cards -->
             <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-content">
-                <div class="stat-icon-container stat-icon-blue">
-                    <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="8" r="7"/>
-                    <polyline points="8.21,13.89 7,23 12,20 17,23 15.79,13.88"/>
-                    </svg>
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-icon-container stat-icon-blue">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="7"/>
+                                <polyline points="8.21,13.89 7,23 12,20 17,23 15.79,13.88"/>
+                            </svg>
+                        </div>
+                        <div class="stat-text">
+                            <p class="stat-label">Available</p>
+                            <p class="stat-value">24</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="stat-text">
-                    <p class="stat-label">Available</p>
-                    <p class="stat-value">24</p>
-                </div>
-                </div>
-            </div>
 
-            <div class="stat-card">
-                <div class="stat-content">
-                <div class="stat-icon-container stat-icon-blue">
-                    <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
-                    <polyline points="14,2 14,8 20,8"/>
-                    </svg>
-                </div>
-                <div class="stat-text">
-                    <p class="stat-label">Applied</p>
-                    <p class="stat-value">8</p>
-                </div>
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-icon-container stat-icon-blue">
+                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+                                <polyline points="14,2 14,8 20,8"/>
+                            </svg>
+                        </div>
+                        <div class="stat-text">
+                            <p class="stat-label">Applied</p>
+                            <p class="stat-value">8</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            </div>
-
 
             <!-- Scholarships Section -->
             <div class="scholarships-section">
                 <h2 class="section-title">Featured Scholarships</h2>
-                
+
                 <div class="scholarships-grid">
                     <!-- Scholarship Card 1 -->
                     <div class="scholarship-card">
                         <div class="scholarship-content">
                             <div class="scholarship-info">
                                 <h3 class="scholarship-title">Merit Excellence Scholarship</h3>
-                                <p class="scholarship-description">
-                                    For outstanding academic achievement and leadership potential.
-                                </p>
-                                
+                                <p class="scholarship-description">For outstanding academic achievement and leadership potential.</p>
+
                                 <div class="scholarship-meta">
                                     <div class="meta-item meta-amount">
                                         <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -173,7 +191,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="scholarship-actions">
                                 <button class="btn btn-outline">View Details</button>
                                 <button class="btn btn-primary">Apply Now</button>
@@ -186,10 +204,8 @@
                         <div class="scholarship-content">
                             <div class="scholarship-info">
                                 <h3 class="scholarship-title">STEM Innovation Grant</h3>
-                                <p class="scholarship-description">
-                                    Supporting students pursuing science, technology, engineering, or mathematics.
-                                </p>
-                                
+                                <p class="scholarship-description">Supporting students pursuing science, technology, engineering, or mathematics.</p>
+
                                 <div class="scholarship-meta">
                                     <div class="meta-item meta-amount">
                                         <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -216,7 +232,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="scholarship-actions">
                                 <button class="btn btn-outline">View Details</button>
                                 <button class="btn btn-primary">Apply Now</button>
@@ -229,10 +245,8 @@
                         <div class="scholarship-content">
                             <div class="scholarship-info">
                                 <h3 class="scholarship-title">Community Service Award</h3>
-                                <p class="scholarship-description">
-                                    Recognizing exceptional community involvement and volunteer work.
-                                </p>
-                                
+                                <p class="scholarship-description">Recognizing exceptional community involvement and volunteer work.</p>
+
                                 <div class="scholarship-meta">
                                     <div class="meta-item meta-amount">
                                         <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -259,7 +273,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="scholarship-actions">
                                 <button class="btn btn-outline">View Details</button>
                                 <button class="btn btn-primary">Apply Now</button>
