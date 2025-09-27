@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scholarship Portal - Dashboard</title>
     <meta name="description" content="Academic scholarship management portal for students to discover and apply for educational funding opportunities.">
-    <link rel="stylesheet" href="{% static 'homepage.css' %}">
+    <link rel="stylesheet" href="{% static 'homepage.css' %}?=v2">
 </head>
 <body>
     <!-- Header -->
@@ -14,7 +14,7 @@
         <div class="header-content">
             <!-- Left: Logo/Image Icon -->
             <div class="header-left">
-                <img src="images/logo.png" alt="Logo" class="logo-icon">
+                <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo-icon">
                     <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
                     <path d="M6 12v5c3 3 9 3 12 0v-5"/>
                 </svg>

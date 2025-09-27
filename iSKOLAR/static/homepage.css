@@ -57,8 +57,8 @@ body {
     right: 0;
     z-index: 50;
     height: 64px;
-    background-color: var(--header-bg);
-    border-bottom: 1px solid var(--header-border);
+    background-color: var(--background);
+    border-bottom: 1px solid var(--secondary);
 }
 
 .header-content {
@@ -72,10 +72,11 @@ body {
 .header-left {
     display: flex;
     align-items: center;
+    margin-left: -12px;
 }
 
 .logo-icon {
-    height: 90px;
+    height: 80px;
     width: auto;
     object-fit: contain;
     margin: 0 8px;

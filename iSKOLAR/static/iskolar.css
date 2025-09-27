@@ -55,6 +55,7 @@ body {
 /* Header Styles */
 .header {
     position: fixed;
+    height: 80px; 
     top: 0;
     left: 0;
     right: 0;
@@ -65,10 +66,12 @@ body {
 }
 
 .header-content {
+    height: 100%;
+    padding: 0 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 0;
+    gap: 2rem;
 }
 
 .logo {
@@ -77,27 +80,14 @@ body {
     gap: 0.5rem;
 }
 
-.logo-icon {
-    width: 2rem;
-    height: 2rem;
-    background: var(--gradient-hero);
-    border-radius: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--primary-foreground);
-    font-weight: bold;
-    font-size: 0.875rem;
-}
-
-.logo-text {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: var(--foreground);
+.logo-img {
+    height: 90px; 
+    width: auto;
+    display: block;
 }
 
 .nav {
-    display: none;
+    display: flex;
     align-items: center;
     gap: 2rem;
 }
