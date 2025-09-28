@@ -1,0 +1,297 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+     /* Color System */
+    --background: hsl(220, 20%, 98%);
+    --forground: hsl(215, 25%, 15%);
+    --card: hsl(0, 0%, 100%);
+    --card-foreground: hsl(215, 25%, 15%);
+    --primary: hsl(210, 100%, 45%);
+    --primary-foreground: hsl(0, 0%, 100%);
+    --secondary: hsl(185, 100%, 96%);
+    --secondary-foreground: hsl(210, 100%, 40%);
+    --muted: hsl(210, 30%, 95%);
+    --muted-foreground: hsl(215, 15%, 50%);
+    --accent: hsl(45, 100%, 70%);
+    --accent-foreground: hsl(215, 25%, 15%);
+    --success: hsl(145, 60%, 50%);
+    --success-foreground: hsl(0, 0%, 100%);
+    --destructive: hsl(0, 84%, 60%);
+    --destructive-foreground: hsl(210, 40%, 98%);
+    --border: hsl(210, 25%, 90%);
+    --input: hsl(210, 25%, 90%);
+    --ring: hsl(210, 100%, 45%);
+
+    /* Design Tokens */
+    --shadow-elegant: 0 10px 40px -10px hsl(210, 100%, 45%, 0.2);
+    --shadow-glow: 0 0 30px hsl(210, 100%, 60%, 0.3);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --gradient-hero: linear-gradient(135deg, hsl(210, 100%, 45%), hsl(185, 100%, 60%));
+    --gradient-subtle: linear-gradient(180deg, hsl(220, 20%, 98%), hsl(185, 100%, 98%));
+
+    /* Typography */
+    --radius: 0.5rem;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  color: hsl(var(--foreground));
+  line-height: 1.5;
+  overflow: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(images/students.jpg) no-repeat center center/cover;
+  filter: blur(8px); 
+  opacity: 2;/* ✅ Blur + darken */
+  z-index: -1;
+}
+
+/* Container */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+/* Card */
+.card {
+  width: 100%;
+  max-width: 28rem;
+  background: var(--background);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-elegant);
+  overflow: hidden;
+}
+
+.card-header {
+  padding: 1.5rem 1.5rem 1rem;
+  text-align: center;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--card-foreground);
+  margin-bottom: 0.5rem;
+}
+
+.card-description {
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.card-content {
+  padding: 0 1.5rem 1.5rem;
+}
+
+.icon-container {
+  width: 4rem;
+  height: 4rem;
+  background: var(--gradient-hero);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+
+.mail-icon {
+  width: 2rem;
+  height: 2rem;
+  color: var(--primary-foreground);
+}
+
+/* Form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--card-foreground);
+}
+
+
+
+.input {
+  display: flex;
+  height: 2.5rem;
+  width: 100%;
+  border-radius: (var(--primary) - 2px);
+  border: 2px solid var(--card-foreground);
+  background: hsl(var(--background));
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: hsl(var(--foreground));
+  transition: var(--transition-smooth);
+}
+
+.input::placeholder {
+  color: hsl(var(--muted-foreground));
+}
+
+.input:focus {
+  outline: none;
+  ring: 2px solid hsl(var(--ring));
+  ring-offset: 2px;
+  box-shadow: var(--shadow-glow);
+}
+
+.input:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Button */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  border-radius: calc(var(--radius) - 2px);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: var(--transition-smooth);
+  cursor: pointer;
+  border: 2px solid var(--card-foreground);
+  height: 2.5rem;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+}
+
+.btn:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.btn-gradient {
+  background: var(--secondary);
+  color: hsl(var(--primary-foreground));
+}
+
+.btn-gradient:hover:not(:disabled) {
+  box-shadow: var(--shadow-glow);
+  transform: scale(1.02);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--card-foreground);
+}
+
+.btn-ghost:hover:not(:disabled) {
+  background: hsl(var(--card-foreground));
+  color: var(--card-foreground); 
+  transform: scale(1.02); 
+  box-shadow: var(--shadow-glow); 
+}
+
+/* Icon */
+.icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+/* Loading spinner */
+.spinner {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid hsl(var(--primary-foreground) / 0.3);
+  border-top: 2px solid hsl(var(--primary-foreground));
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Help text */
+.help-text {
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-elegant);
+  padding: 1rem;
+  max-width: 20rem;
+  z-index: 1000;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.toast.show {
+  transform: translateX(0);
+}
+
+.toast.error {
+  border-color: hsl(var(--destructive));
+  background: hsl(var(--destructive) / 0.1);
+}
+
+.toast.success {
+  border-color: hsl(var(--primary));
+  background: hsl(var(--primary) / 0.1);
+}
+
+.toast-content {
+  color: hsl(var(--card-foreground));
+  font-size: 0.875rem;
+}
+
+/* Utility classes */
+.hidden {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .container {
+    padding: 0.5rem;
+  }
+  
+  .card {
+    max-width: none;
+  }
+}

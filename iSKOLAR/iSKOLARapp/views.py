@@ -44,4 +44,6 @@ def homepage_view(request):
     return render(request, "homepage.html")
 def profile_view(request):
     return render(request, "profile.html")
+def forgot_view(request):
+    return render(request, "forgot.html")
 
