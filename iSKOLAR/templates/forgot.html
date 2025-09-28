@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password - Reset Your Password</title>
+    <meta name="description" content="Reset your password securely. Enter your email address and we'll send you a link to reset your password.">
+    <link rel="stylesheet" href="{% static 'forgot.css' %}?v=2">
+</head>
+<body>
+    <div class="container">
+        <!-- Form State -->
+        <div id="form-card" class="card">
+            <div class="card-header">
+                <h1 class="card-title">Forgot your password?</h1>
+                <p class="card-description">
+                    Enter your email address and we'll send you a link to reset your password.
+                </p>
+            </div>
+            <div class="card-content">
+                <!-- ✅ only one form -->
+                <form method="POST" action="{% url 'password_reset' %}" class="form">
+                    {% csrf_token %}
+                    
+                    <div class="form-group">
+                        <label for="id_email" class="label">Email address</label>
+                        {{ form.email }}  <!-- Django’s PasswordResetForm provides this -->
+                    </div>
+
+                    <button type="submit" class="btn btn-gradient">
+                        Send reset link
+                    </button>
+                </form>
+                
+                <a href="{% url 'login' %}" class="btn btn-ghost">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="m12 19-7-7 7-7"/>
+                        <path d="M19 12H5"/>
+                    </svg>
+                    Back to login
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

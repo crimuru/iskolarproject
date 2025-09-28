@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>iSKOLAR Login</title>
     <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
-  <link rel="stylesheet" href="{% static 'signup.css' %}"> <!-- Use signup.css for matching style -->
+  <link rel="stylesheet" href="{% static 'signup.css' %}?=v2"> <!-- Use signup.css for matching style -->
 </head>
 <body>
 
@@ -48,8 +48,7 @@
         <input type="password" name="password" placeholder="Enter your password" required />
 
         <div class="options">
-          <label><input type="checkbox" /> Remember me</label>
-          <a href="#">Forgot password?</a>
+          <a href="{% url 'password_reset' %}">Forgot password?</a>
         </div>
 
         <button type="submit" class="login-btn">Access Your Scholar Portal</button>
