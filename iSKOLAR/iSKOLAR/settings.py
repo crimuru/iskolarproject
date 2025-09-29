@@ -113,7 +113,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "hadesmeal@gmail.com"
 EMAIL_HOST_PASSWORD = "mtxtedevkelegjwq"
-DEFAULT_FROM_EMAIL = "hadesmeal@gmail.com"
+DEFAULT_FROM_EMAIL = "ISKOLAR Website <hadesmeal@gmail.com>"
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/

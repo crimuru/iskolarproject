@@ -1,0 +1,85 @@
+:root {
+    /* Color System */
+    --background: hsl(220, 20%, 98%);
+    --foreground: hsl(215, 25%, 15%);
+    --card: hsl(0, 0%, 100%);
+    --card-foreground: hsl(215, 25%, 15%);
+    --primary: hsl(210, 100%, 45%);
+    --primary-foreground: hsl(0, 0%, 100%);
+    --secondary: hsl(185, 100%, 96%);
+    --secondary-foreground: hsl(210, 100%, 40%);
+    --muted: hsl(210, 30%, 95%);
+    --muted-foreground: hsl(215, 15%, 50%);
+    --accent: hsl(45, 100%, 70%);
+    --accent-foreground: hsl(215, 25%, 15%);
+    --success: hsl(145, 60%, 50%);
+    --success-foreground: hsl(0, 0%, 100%);
+    --destructive: hsl(0, 84%, 60%);
+    --destructive-foreground: hsl(210, 40%, 98%);
+    --border: hsl(210, 25%, 90%);
+    --input: hsl(210, 25%, 90%);
+    --ring: hsl(210, 100%, 45%);
+
+    /* Design Tokens */
+    --shadow-elegant: 0 10px 40px -10px hsl(210, 100%, 45%, 0.2);
+    --shadow-glow: 0 0 30px hsl(210, 100%, 60%, 0.3);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --gradient-hero: linear-gradient(135deg, hsl(210, 100%, 45%), hsl(185, 100%, 60%));
+    --gradient-subtle: linear-gradient(180deg, hsl(220, 20%, 98%), hsl(185, 100%, 98%));
+
+    /* Typography */
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --radius: 0.5rem;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--gradient-subtle);
+  color: var(--foreground);
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.card {
+  width: 100%;
+  max-width: 520px;
+  text-align: center;
+  background: var(--card);
+  border-radius: calc(var(--radius) * 1.25);
+  padding: 2rem;
+  box-shadow: var(--shadow-elegant);
+  border: 1px solid var(--border);
+}
+
+.icon { margin-bottom: 0.6rem; }
+
+.title { margin: 0.25rem 0 0.65rem; font-size: 1.4rem; color: var(--foreground); }
+.lead { color: var(--muted-foreground); margin: 0 0 1rem; }
+
+.actions { display:flex; justify-content:center; gap:0.75rem; }
+.btn-primary {
+  padding: 0.6rem 1rem;
+  border-radius: calc(var(--radius));
+  background: var(--primary);
+  color: var(--primary-foreground);
+  text-decoration: none;
+  font-weight: 700;
+  border: none;
+  display: inline-block;
+}
+.logo {
+  max-width: 70px;
+  height: auto;
+  display: block;  
+  margin: 0 auto;
+}
+.site-foot { margin-top: 1rem; color: var(--muted-foreground); }
+.site-foot a { color: var(--primary); text-decoration: none; }
