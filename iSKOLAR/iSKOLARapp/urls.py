@@ -8,6 +8,8 @@ urlpatterns = [
     path("signup/", views.signup_view, name="signup"),
     path("homepage/", views.homepage_view, name="homepage"),
     path("profile/", views.profile_view, name="profile"),
+    path('profile/view/', views.view_profile, name='view_profile'),
+
 
     # ✅ password reset URLs
     path("forgot/", 

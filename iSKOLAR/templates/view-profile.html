@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Profile - ScholarFinder</title>
+  <link rel="stylesheet" href="{% static 'view_profile.css' %}">
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+<div class="main-wrapper">
+    <h1>My Profile</h1>
+    <p class="subtitle">Manage your personal information and track your profile completeness</p>
+    
+    <div class="profile-container">
+
+        <div class="profile-sidebar">
+            <div class="profile-card-header">
+                <div class="avatar-wrapper">
+                    <div class="avatar" id="profileAvatar">AJ</div>
+                    <input type="file" id="avatarInput" accept="image/*" style="display: none;">
+                    <div class="avatar-edit-icon" id="avatarEditIcon">
+                        <i data-lucide="camera" width="16" height="16"></i>
+                    </div>
+                </div>
+                <h2 class="profile-name-display" id="displayName">Alex Johnson</h2>
+                <p class="profile-major-display" id="displayMajor">Computer Science</p>
+            </div>
+            
+            <ul class="contact-info">
+                <li class="info-item"><i data-lucide="mail"></i> <span id="displayEmail">alex.johnson@email.com</span></li>
+                <li class="info-item"><i data-lucide="phone"></i> <span id="displayPhone">+1 (555) 123-4567</span></li>
+                <li class="info-item"><i data-lucide="map-pin"></i> <span id="displayLocation">New York, NY</span></li>
+                <li class="info-item"><i data-lucide="graduation-cap"></i> <span id="displayGraduation">Class of 2026</span></li>
+            </ul>
+        </div>
+
+        <div class="profile-content">
+            
+            <div class="completeness-card">
+                <p><strong>Profile Completeness</strong> <strong style="float:right;" id="completenessPercent">25%</strong></p>
+                <p class="text-sm">Complete your profile to improve scholarship matches</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="completenessBar" style="width: 25%;"></div>
+                </div>
+                <div class="missing-info">
+                    <p><strong>Missing Information:</strong></p>
+                    <ul>
+                        <li>Upload Profile Photo</li>
+                        <li>Address</li>
+                        <li>Birthdate</li>
+                        <li>GPA/GWA</li>
+                        <li>Complete Bio</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="personal-information-section">
+                <div class="section-header">
+                    <h3>Profile Details</h3>
+                    <button type="button" class="edit-btn" id="editBtn"><i data-lucide="edit" width="16" height="16"></i> Edit</button>
+                </div>
+                <p class="text-sm" style="color:#666; margin-bottom: 1rem;">Update your personal and educational background details.</p>
+                
+                <form id="profileForm" class="form-details">
+                    
+                    <h2 class="form-section-heading">PERSONAL INFORMATION</h2>
+
+                    <div class="form-grid-2-col">
+                        
+                        <div class="form-group"><label for="firstName">First Name *</label><input type="text" id="firstName" value="Alex" disabled required></div>
+                        <div class="form-group"><label for="lastName">Last Name *</label><input type="text" id="lastName" value="Johnson" disabled required></div>
+
+                        <div class="form-group"><label for="middleName">Middle Name</label><input type="text" id="middleName" value="" disabled></div>
+                        <div class="form-group"><label for="birthdate">Birthdate *</label><input type="text" id="birthdate" value="" placeholder="MM / DD / YYYY" disabled required></div>
+                        
+                        <div class="form-group"><label for="email">Email *</label><input type="email" id="email" value="alex.johnson@email.com" disabled required></div>
+                        <div class="form-group"><label for="phone">Phone *</label><input type="tel" id="phone" value="+1 (555) 123-4567" disabled required></div>
+
+                        <div class="form-group form-grid-full"><label for="address">Address / Location *</label><input type="text" id="address" value="New York, NY" disabled required></div>
+
+                        <div class="form-group radio-container">
+                            <label>Gender</label>
+                            <div class="radio-group">
+                                <div class="radio-option"><input type="radio" id="male" name="gender" value="Male" checked disabled><label for="male">Male</label></div>
+                                <div class="radio-option"><input type="radio" id="female" name="gender" value="Female" disabled><label for="female">Female</label></div>
+                                <div class="radio-option"><input type="radio" id="others" name="gender" value="Others" disabled><label for="others">Others</label></div>
+                            </div>
+                        </div>
+                        <div class="form-group radio-container">
+                            <label>Citizenship *</label>
+                            <div class="radio-group">
+                                <div class="radio-option"><input type="radio" id="filipino" name="citizenship" value="Filipino" checked disabled><label for="filipino">Filipino</label></div>
+                                <div class="radio-option"><input type="radio" id="foreigner" name="citizenship" value="Foreigner" disabled><label for="foreigner">Foreigner</label></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="form-section-heading">EDUCATIONAL BACKGROUND</h2>
+                    
+                    <div class="education-buttons">
+                        <button type="button" class="edu-btn">JUNIOR HIGH</button>
+                        <button type="button" class="edu-btn">SENIOR HIGH</button>
+                        <button type="button" class="edu-btn active">COLLEGE</button>
+                    </div>
+
+                    <div class="form-grid-2-col">
+                        <div class="form-group"><label for="currentSchool">Current School</label><input type="text" id="currentSchool" value="Tech University" disabled></div>
+                        <div class="form-group">
+                            <label for="yearLevel">Year Level</label>
+                            <select id="yearLevel" disabled>
+                                <option value="" disabled>Select Year</option>
+                                <option value="2027">1st Year (2027)</option>
+                                <option value="2026" selected>2nd Year (2026)</option>
+                                <option value="2025">3rd Year (2025)</option>
+                                <option value="2024">4th Year (2024)</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label for="course">College Course / Major</label><input type="text" id="course" value="Computer Science" disabled></div>
+                        <div class="form-group"><label for="gwa">Average Grade / GWA</label><input type="text" id="gwa" value="" disabled></div>
+                    </div>
+                    
+                    <h2 class="form-section-heading">BIOGRAPHY</h2>
+                    <div class="form-group form-grid-full">
+                        <textarea id="bio" rows="4" disabled>Passionate about technology and innovation. Seeking scholarships to support my academic journey in computer science.</textarea>
+                    </div>
+
+                    <div class="form-actions" id="formActions" style="display: none;">
+                        <button type="button" class="btn btn-outline" id="cancelBtn">Cancel</button>
+                        <button type="button" class="btn btn-primary" id="saveBtn">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'view.js' %}"></script>
+
+</body>
+</html>
