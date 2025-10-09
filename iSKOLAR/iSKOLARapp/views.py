@@ -94,3 +94,5 @@ def profile_view(request):
 
 def forgot_view(request):
     return render(request, "forgot.html")
+def view_profile(request):
+    return render(request, 'view-profile.html')

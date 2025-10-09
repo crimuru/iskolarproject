@@ -1,0 +1,350 @@
+/* ------------------- Base Layout & Styling ------------------- */
+:root {
+    --gradient-hero: linear-gradient(135deg, hsl(210, 100%, 45%), hsl(185, 100%, 60%));
+    --gradient-subtle: linear-gradient(180deg, hsl(220, 20%, 98%), hsl(185, 100%, 98%));
+    --primary-color: hsl(210, 100%, 45%);
+    --accent-color: hsl(185, 100%, 60%);
+    --text-dark: #333;
+    --text-light: #555;
+    --border-light: #eee;
+    --bg-white: #fff;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--gradient-subtle);
+    margin: 0;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.main-wrapper {
+    max-width: 1200px;
+    width: 100%;
+}
+
+h1 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+p.subtitle {
+    color: var(--text-light);
+    margin-bottom: 2rem;
+}
+
+.profile-container {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+/* ------------------- LEFT SIDEBAR ------------------- */
+.profile-sidebar {
+    flex: 0 0 320px;
+    background-color: var(--bg-white);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    padding: 1.5rem;
+}
+
+.profile-card-header {
+    text-align: left;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.avatar-wrapper {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: var(--gradient-hero);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    background-size: cover;
+    background-position: center;
+}
+
+.avatar-edit-icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    padding: 0.2rem;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-name-display {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+    color: var(--text-dark);
+}
+
+.profile-major-display {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.contact-info {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 0.75rem;
+}
+
+.info-item i {
+    color: var(--primary-color);
+    width: 16px;
+    height: 16px;
+}
+
+/* ------------------- PROFILE COMPLETENESS ------------------- */
+.completeness-card {
+    background-color: #e6f7ff;
+    border: 1px solid #b3e5fc;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin-bottom: 1.5rem;
+}
+
+.completeness-card strong {
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #eee;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--gradient-hero);
+    border-radius: 4px;
+}
+
+.missing-info ul {
+    list-style-type: disc;
+    padding-left: 1.25rem;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+/* ------------------- RIGHT CONTENT ------------------- */
+.profile-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.personal-information-section {
+    background-color: var(--bg-white);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    padding: 1.5rem;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.edit-btn {
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--primary-color);
+    background: transparent;
+    color: var(--primary-color);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    transition: background-color 0.2s;
+}
+
+.edit-btn:hover {
+    background-color: hsl(185, 100%, 95%);
+}
+
+/* ------------------- FORM ------------------- */
+.form-section-heading {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid var(--border-light);
+    text-transform: uppercase;
+}
+
+.form-grid-2-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 0.65rem 0.75rem;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    background-color: var(--bg-white);
+    transition: border-color 0.2s;
+    resize: none;
+}
+
+.form-group input:disabled,
+.form-group select:disabled,
+.form-group textarea:disabled {
+    background-color: #f9f9f9;
+    color: #555;
+    border: 1px solid #eee;
+}
+
+.form-group input:focus:not(:disabled),
+.form-group select:focus:not(:disabled),
+.form-group textarea:focus:not(:disabled) {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+/* ------------------- RADIO GROUP ------------------- */
+.radio-container {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 0.5rem 0.75rem;
+}
+.radio-group {
+    display: flex;
+    gap: 1.5rem;
+}
+.radio-option {
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+    color: var(--text-light);
+}
+.radio-option input[type="radio"] {
+    margin-right: 0.5rem;
+    accent-color: var(--primary-color);
+}
+
+/* ------------------- EDUCATION BUTTONS ------------------- */
+.education-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+.edu-btn {
+    padding: 0.6rem 1.5rem;
+    border: 1px solid #ddd;
+    background: white;
+    color: #555;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+.edu-btn.active {
+    border-color: var(--primary-color);
+    background: var(--gradient-hero);
+    color: white;
+}
+
+/* ------------------- FORM ACTIONS ------------------- */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: 2rem;
+}
+
+.btn {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
+
+.btn-primary {
+    background: var(--gradient-hero);
+    color: white;
+}
+
+.btn-outline {
+    background: #fff;
+    border: 1px solid #ddd;
+    color: #333;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
