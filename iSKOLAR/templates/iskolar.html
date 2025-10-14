@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iSKOLAR - Find Your Dream Scholarship</title>
-     <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
-    <meta name="description" content="Centralized scholarship platform for Filipino students. Find and apply for scholarships easily with iSKOLAR - no more scattered searches across social media.">
+    <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
+    <meta name="description" content="Centralized scholarship platform for Filipino students. Find and apply for scholarships easily with iSKOLAR.">
     <meta name="author" content="iSKOLAR Team">
     
     <meta property="og:title" content="iSKOLAR - Find Your Dream Scholarship">
@@ -18,28 +18,27 @@
 </head>
 
 <body>
-    <header class="header">
-        <div class="container header-content">
-            <!-- Logo -->
+    <!-- Header -->
+    <header class="header" style="background-color: rgba(234, 255, 255, 0.352); margin-left:-20rem; margin-right: -20rem;">
+        <div class="container header-content" style="background-color: rgba(234, 255, 255, 0.352);">
             <div class="logo">
                 <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo-img">
             </div>
-
-            <!-- Navigation -->
             <nav class="nav">
                 <a href="#features">Features</a>
                 <a href="#about">About</a>
                 <a href="#contact">Contact</a>
             </nav>
-
-            <!-- Auth Buttons -->
             <div class="auth-buttons">
                 <a href="{% url 'login' %}" class="btn btn-ghost btn-sm">Login</a>
                 <a href="{% url 'signup' %}" class="btn btn-hero btn-sm">Sign Up</a>
             </div>
         </div>
+      
     </header>
+    
 
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="floating-elements">
@@ -47,85 +46,125 @@
             <div class="floating-element floating-2"></div>
             <div class="floating-element floating-3"></div>
         </div>
-        
         <div class="hero-content container">
-                <h1 class="hero-title">
-                    <span class="text-normal">Find Your Dream</span><br>
-                    <span class="text-gradient">Scholarship</span><br>
-                    <span class="text-normal">in One Place</span>
-                </h1>
+            <h1 class="hero-title" style=" font-size: 4.5rem; line-height:72px;">
+                <span class="text-normal">Find Your Dream <br>
+                <span class="text-gradient">Scholarship</span><br> in One Place</span>
+            </h1>
 
-                <p class="hero-subtitle">
-                    Stop searching through countless websites and social media posts. 
-                   <strong> <span class="text-gradient">iSKOLAR</span></strong> centralizes all scholarship opportunities 
-                    for Filipino students in one easy-to-use platform.
-                </p>
+            <p class="hero-subtitle" style=" font-size: 1.3rem; text-align: center; margin: 1.5rem ; max-width: 750px;">
+                Stop searching through countless websites and social media posts. 
+                <strong><span class="text-gradient">iSKOLAR</span></strong> centralizes all scholarship opportunities 
+                for Filipino students in one easy-to-use platform.
+            </p>
 
-                <!-- Call to Action -->
-                <div class="hero-cta">
-                    <a href="{% url 'login' %}" class="btn btn-hero btn-xl">
-                        <i data-lucide="graduation-cap"></i>
-                        Start Your Journey
-                    </a>
-                    <a href="{% url 'login' %}" class="btn btn-outline btn-xl">
-                        <i data-lucide="search"></i>
-                        Browse Scholarships
-                    </a>
+            <div class="hero-cta">
+                <a href="{% url 'login' %}" class="btn btn-hero btn-xl">
+                    <i data-lucide="graduation-cap"></i>
+                    Start Your Journey
+                </a>
+                <a href="{% url 'login' %}" class="btn btn-outline btn-xl">
+                    <i data-lucide="search"></i>
+                    Browse Scholarships
+                </a>
             </div>
         </div>
     </section>
 
+    <!-- Features Section -->
     <section id="features" class="features">
         <div class="container">
-            <div class="section-header">
-                <h2>Everything You Need to <span class="text-gradient">Succeed</span></h2>
-                <p>Our platform is designed specifically for Filipino students, addressing the real challenges you face when searching for educational funding.</p>
+            <div class="section-header" >
+                <h2 style=" font-size: 3rem;">Everything You Need to <span class="text-gradient">Succeed</span></h2>
+                <p style="max-width: 750px; font-size: 1.3rem; ">Our platform is designed specifically for Filipino students, addressing the real challenges you face when searching for educational funding.</p>
             </div>
 
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i data-lucide="search"></i>
+            <div class="features-grid" >
+                <div class="feature-card" style="text-align: center; ">
+                    <div class="feature-icon" style="
+                        width: 3.5rem;
+                        height: 3.5rem; 
+                        background-color: rgb(218, 243, 255); 
+                        border-radius: 0.5rem; 
+                        display: flex; 
+                        align-items: left; 
+                        justify-content: center;">
+                        <i data-lucide="search" style = "width: 2rem; height: 3rem; color:rgb(68, 177, 255);"></i>
                     </div>
                     <h3>Centralized Search</h3>
                     <p>Find all scholarships in one place instead of hunting through social media and scattered websites.</p>
                 </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i data-lucide="target"></i>
+
+                <div class="feature-card " style="text-align: center; ">
+                        <div class="feature-icon" style="
+                            width: 3.5rem; 
+                            height: 3.5rem; 
+                            background-color: rgb(218, 243, 255); 
+                            border-radius: 0.5rem; 
+                            display: flex; 
+                            align-items: left; 
+                            justify-content: center;">
+                        <i data-lucide="target" style = "width: 2rem; height: 3rem; color:rgb(68, 177, 255);"></i>
                     </div>
                     <h3>Smart Matching</h3>
                     <p>Get personalized scholarship recommendations based on your profile and qualifications.</p>
                 </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i data-lucide="clock"></i>
-                    </div>
+
+               <div class="feature-card " style="text-align: center; ">
+                <div class="feature-icon" style="
+                    width: 3.5rem; 
+                    height: 3.5rem; 
+                    background-color: rgb(218, 243, 255); 
+                    border-radius: 0.5rem; 
+                    display: flex; 
+                    align-items: left; 
+                    justify-content: center;">
+                    <i data-lucide="clock" style="width: 2rem; height: 3rem; color:rgb(68, 177, 255);"></i>
+                </div>
                     <h3>Never Miss Deadlines</h3>
                     <p>Automated reminders and deadline tracking ensure you never miss an application deadline.</p>
                 </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i data-lucide="shield"></i>
+
+                <div class="feature-card" style="text-align: center; ">  
+                    <div class="feature-icon" style="
+                        width: 3.5rem;
+                        height: 3.5rem;
+                        background-color: rgb(218, 243, 255);
+                        border-radius: 0.5rem;
+                        display: flex;
+                        align-items: left;
+                        justify-content: center;">
+                        <i data-lucide="shield" style="width: 2rem; height: 3rem; color:rgb(68, 177, 255);"></i>
                     </div>
                     <h3>Verified Opportunities</h3>
                     <p>All scholarships are verified and vetted to ensure legitimacy and accuracy.</p>
                 </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i data-lucide="award"></i>
+
+                <div class="feature-card" style="text-align: center; ">
+                    <div class="feature-icon" style="
+                        width: 3.5rem;
+                        height: 3.5rem;
+                        background-color: rgb(218, 243, 255);
+                        border-radius: 0.5rem;
+                        display: flex;
+                        align-items: left;
+                        justify-content: center;">
+                        <i data-lucide="award" style="width: 2rem; height: 3rem; color:rgb(68, 177, 255);" ></i>
                     </div>
                     <h3>Application Tracking</h3>
                     <p>Monitor your application status and manage all your submissions in one dashboard.</p>
                 </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i data-lucide="smartphone"></i>
+
+                <div class="feature-card" style="text-align: center;">
+                    <div class="feature-icon" style="
+                        width: 3.5rem;
+                        height: 3.5rem;
+                        background-color: rgb(218, 243, 255);
+                        border-radius: 0.5rem;
+                        display: flex;
+                        align-items: left;
+                        justify-content: center;">
+                        <i data-lucide="smartphone" style="width: 2rem; height: 3rem; color:rgb(68, 177, 255);"></i>
                     </div>
                     <h3>WEB Friendly</h3>
                     <p>Access scholarships anytime, anywhere with our fully responsive web platform.</p>
@@ -134,68 +173,68 @@
         </div>
     </section>
 
+    <!-- About Section -->
     <section id="about" class="problem-solution">
         <div class="container">
             <div class="section-header">
                 <h2>About <span class="text-gradient">iSKOLAR</span></h2>
-                <p>At iSKOLAR, we believe every Filipino student deserves equal access to education. Our platform is designed to simplify the scholarship search and application process by gathering opportunities from various sources into one easy-to-use hub. We help students save time, stay organized, and never miss a deadline, empowering them to focus on their dreams. Whether you’re seeking financial assistance for college or exploring options to support your studies, iSKOLAR is here to guide you every step of the way toward a brighter future.</p>
+                <p style="max-width: 900px; font-size: 1.2rem;">At iSKOLAR, we believe every Filipino student deserves equal access to education. Our platform is designed to simplify the scholarship search and application process by gathering opportunities from various sources into one easy-to-use hub.
+                    <br> <br> We help students save time, stay organized, and never miss a deadline, empowering them to focus on their dreams. Whether you're seeking financial assistance for college or exploring options to support your studies, iSKOLAR is here to guide you every step of the way toward a brighter future.
+                </p>
             </div>    
         </div>
     </section>
-    
+<hr style="border: none; height: 1px; background-color: rgba(0, 0, 0, 0.1); margin: 0;">
+
     <!-- Footer -->
-    <footer id="contact" class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <!-- Brand -->
-                <div class="footer-brand">
-                    <div class="logo">
-                        <div class="logo-icon">
-                        </div>
-                        <h2><span class="text-gradient">iSKOLAR</span></h2>
-                    </div>
-                    <p>Empowering Filipino students to find and apply for scholarships through our centralized, easy-to-use platform.</p>
+                <footer id="contact" class="footer" style="background-color: white; padding: 40px 0; border-top: 1px solid rgba(0,0,0,0.1);">
+            <div class="container" 
+                style="max-width: 1200px; 
+                        margin: 0 auto; 
+                        display: flex; 
+                        justify-content: space-between; 
+                        align-items: flex-start; 
+                        gap: 50px;">
+
+                <div class="footer-brand" style="flex: .8;">
+                <h2><span class="text-gradient">iSKOLAR</span></h2>
+                <p>Empowering Filipino students to find and apply for scholarships <br>through our centralized, easy-to-use platform.</p>
                 </div>
 
-                <!-- Quick Links -->
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <div class="footer-links">
-                        <a href="#features">Features</a>
-                        <a href="#about">About Us</a>
-                        <!-- <a href="#scholarships">Browse Scholarships</a> -->
-                    </div>
+            
+                <div class="footer-section" style="flex: .6;">
+                <h4>Quick Links</h4>
+                <div class="footer-links" style="display: flex; flex-direction: column; gap: 5px;">
+                    <a href="#features">Features</a>
+                    <a href="#about">About Us</a>
+                </div>
                 </div>
 
-                <!-- Contact -->
-                <div class="footer-section">
-                    <h4>Contact Info</h4>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <i data-lucide="mail"></i>
-                            <span>support@iskolar.ph</span>
-                        </div>
-                        <div class="contact-item">
-                            <i data-lucide="phone"></i>
-                            <span>+63 917 123 4567</span>
-                        </div>
-                        <div class="contact-item">
-                            <i data-lucide="map-pin"></i>
-                            <span>Cebu City, Philippines</span>
-                        </div>
+                <div class="footer-section" style="flex: .3;">
+                <h4>Contact Info</h4>
+                <div class="contact-info" style="display: flex; flex-direction: column; gap: 6px;">
+                    <div class="contact-item" style="display: flex; align-items: center; gap: 8px;">
+                    <i data-lucide="mail" style="color:rgb(68, 177, 255);"></i>
+                    <span>support@iskolar.ph</span>
                     </div>
+                    <div class="contact-item" style="display: flex; align-items: center; gap: 8px;">
+                    <i data-lucide="phone" style="color:rgb(68, 177, 255);"></i>
+                    <span>+63 917 123 4567</span>
+                    </div>
+                    <div class="contact-item" style="display: flex; align-items: center; gap: 8px;">
+                    <i data-lucide="map-pin" style="color:rgb(68, 177, 255);"></i>
+                    <span>Cebu City, Philippines</span>
+                    </div>
+                </div>
                 </div>
             </div>
 
-            <!-- Bottom -->
-            <div class="footer-bottom">
-                <div class="footer-copyright">
-                    <i data-lucide="graduation-cap"></i>
-                    <span>© 2024 iSKOLAR. All rights reserved.</span>
-                </div>
-                <div class="footer-heart">
-                    <span>Made with ❤️ for Filipino Students</span>
-                </div>
+<hr style="border: none; height: 1px; background-color: rgba(0, 0, 0, 0.1); width: 80%; margin: 10px auto;">
+           <div class="footer-bottom" style="display: flex; justify-content: center; align-items: center;">
+            <div class="footer-copyright" style="display: flex; align-items: center; gap: 8px;">
+                <i data-lucide="graduation-cap"></i>
+                <span>© 2025 iSKOLAR. All rights reserved.</span>
+            </div>
             </div>
         </div>
     </footer>
