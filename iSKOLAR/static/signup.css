@@ -7,39 +7,14 @@
 }
 
 :root {
-    /* Color System */
-    --background: hsl(220, 20%, 98%);
-    --foreground: hsl(215, 25%, 15%);
-    --card: hsl(0, 0%, 100%);
-    --card-foreground: hsl(215, 25%, 15%);
-    --primary: hsl(210, 100%, 45%);
-    --primary-foreground: hsl(0, 0%, 100%);
-    --secondary: hsl(185, 100%, 96%);
-    --secondary-foreground: hsl(210, 100%, 40%);
-    --muted: hsl(210, 30%, 95%);
-    --muted-foreground: hsl(215, 15%, 50%);
-    --accent: hsl(45, 100%, 70%);
-    --accent-foreground: hsl(215, 25%, 15%);
-    --success: hsl(145, 60%, 50%);
-    --success-foreground: hsl(0, 0%, 100%);
-    --destructive: hsl(0, 84%, 60%);
-    --destructive-foreground: hsl(210, 40%, 98%);
-    --border: hsl(210, 25%, 90%);
-    --input: hsl(210, 25%, 90%);
-    --ring: hsl(210, 100%, 45%);
-
-    /* Design Tokens */
-    --shadow-elegant: 0 10px 40px -10px hsl(210, 100%, 45%, 0.2);
-    --shadow-glow: 0 0 30px hsl(210, 100%, 60%, 0.3);
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --gradient-hero: linear-gradient(135deg, hsl(210, 100%, 45%), hsl(185, 100%, 60%));
-    --gradient-subtle: linear-gradient(180deg, hsl(220, 20%, 98%), hsl(185, 100%, 98%));
-
-    /* Typography */
-    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    --radius: 0.5rem;
+  --background: hsl(220, 20%, 98%);
+  --foreground: hsl(215, 25%, 15%);
+  --primary: hsl(210, 100%, 45%);
+  --ring: hsl(210, 100%, 45%);
+  --gradient-hero: linear-gradient(135deg, hsl(210, 100%, 45%), hsl(185, 100%, 60%));
 }
 
+/* Background */
 .background {
   position: fixed;
   inset: 0;
@@ -62,26 +37,19 @@
   padding: 2rem;
 }
 
+/* Logo */
 .text-gradient {
-    position: relative;
-    background: var(--gradient-hero);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 1.5rem;
-    text-align: center;
-    font-weight: bold;
+  background: var(--gradient-hero);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: bold;
 }
 
 .logo {
   text-align: center;
   margin-bottom: 1rem;
-}
-.logo img {
-  position: absolute;
-  width: 40px;
-  margin-bottom: 10px;
-  top: 0;
-  margin-left: 25px;
 }
 
 .subtitle {
@@ -89,6 +57,7 @@
   color: #666;
   margin-top: 4px;
 }
+
 .highlight-bar {
   width: 120px;
   height: 3px;
@@ -99,155 +68,30 @@
 
 /* Card */
 .login-card {
-  background-color: white;
+  background-color: #fff;
   max-width: 500px;
   width: 100%;
   border-radius: 12px;
-  padding: 2rem;
+  padding: 1.5rem;
   box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-}
-
-/* Titles */
-.login-card h2 {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-  text-align: center;
-}
-.desc {
-  font-size: 0.9rem;
-  color: #555;
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-form label {
-  display: block;
-  margin-bottom: 0.4rem;
-  font-weight: 500;
-}
-form .required {
-  color: #dc2626;
-}
-form input[type="text"],
-form input[type="email"],
-form input[type="password"] {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  margin-bottom: 1rem;
-  transition: border 0.2s, box-shadow 0.2s;
-}
-form input:focus {
-  border-color: var(--ring);
-  box-shadow: var(--gradient-hero);
-  outline: none;
-}
-
-/* Checkbox & Options */
-.options {
-  font-size: 0.85rem;
-  margin-bottom: 1rem;
-  color: #555;
-}
-.options input[type="checkbox"] {
-  margin-right: 6px;
-  accent-color: #8B1C2F; 
-}
-.options a {
-  color: #b91c1c;
-  text-decoration: none;
-}
-.options a:hover {
-  text-decoration: underline;
-}
-
-/* Buttons */
-.login-btn {
-  width: 100%;
-  background: var(--gradient-hero);
-  color: white;
-  padding: 0.75rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.login-btn:hover {
-   background: var(--ring);
-   color: white;
-}
-
-.divider {
-  text-align: center;
-  font-size: 0.8rem;
-  color: #888;
-  margin: 1rem 0;
   position: relative;
 }
-.divider span {
-  background: #fff;
-  padding: 0 10px;
-  position: relative;
-  z-index: 1;
-}
-.divider::before {
-  content: '';
-  position: absolute;
-  height: 1px;
-  width: 100%;
-  top: 50%;
-  left: 0;
-  background: #ccc;
-  z-index: 0;
-}
 
-.register {
-  font-size: 0.85rem;
-  text-align: center;
-  margin-top: 1.5rem;
-}
-.register a {
-  color: #b91c1c;
-  font-weight: 600;
-  text-decoration: none;
-}
-.register a:hover {
-  text-decoration: underline;
-}
-
-/* Keep your original CSS but adjust spacing for compactness */
-
-/* Card */
-.login-card {
-  background-color: white;
-  max-width: 500px;
-  width: 100%;
-  border-radius: 12px;
-  padding: 1.5rem; /* tighter than original 2rem */
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-  position: relative; /* for X button */
-}
-
-/* X Close Button */
+/* Close Button */
 .close-btn {
   position: absolute;
   top: 12px;
   right: 12px;
   font-size: 24px;
   font-weight: bold;
-  color: #b91c1c;
+  color: #000000;
   text-decoration: none;
   cursor: pointer;
-  z-index: 10;
-  transition: color 0.2s ease, transform 0.2s ease;
+  transition: color 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
 }
 .close-btn:hover {
   color: #fff;
-  background-color: #b91c1c;
+  background-color: #000000;
   border-radius: 50%;
   padding: 2px 6px;
   transform: scale(1.1);
@@ -257,47 +101,51 @@ form input:focus {
 .login-card h2 {
   font-size: 1.3rem;
   font-weight: 600;
-  margin-bottom: 0.5rem; /* tighter */
+  margin-bottom: 0.5rem;
   text-align: center;
 }
+
 .desc {
   font-size: 0.9rem;
   color: #555;
   text-align: center;
-  margin-bottom: 1rem; /* tighter */
+  margin-bottom: 1rem;
 }
 
-/* Form labels & inputs spacing */
+/* Form Fields */
 form label {
   display: block;
-  margin-bottom: 0.3rem; /* tighter */
+  margin-bottom: 0.3rem;
   font-weight: 500;
+}
+form .required {
+  color: #dc2626;
 }
 form input[type="text"],
 form input[type="email"],
 form input[type="password"] {
   width: 100%;
-  padding: 0.65rem; /* tighter */
+  padding: 0.65rem;
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 0.95rem;
-  margin-bottom: 0.8rem; /* tighter */
-  transition: border 0.2s, box-shadow 0.2s;
+  margin-bottom: 0.8rem;
+  transition: border 0.2s;
 }
 form input:focus {
   border-color: var(--ring);
-  box-shadow: var(--gradient-hero);
   outline: none;
 }
 
-/* Options and register link spacing */
+/* Checkbox & Options */
 .options {
   font-size: 0.85rem;
-  margin-bottom: 0.8rem; /* tighter */
+  margin-bottom: 0.8rem;
+  color: #555;
 }
 .options input[type="checkbox"] {
   margin-right: 6px;
-  accent-color: #8B1C2F; 
+  accent-color: #8B1C2F;
 }
 .options a {
   color: #b91c1c;
@@ -307,10 +155,11 @@ form input:focus {
   text-decoration: underline;
 }
 
+/* Button */
 .login-btn {
   width: 100%;
   background: var(--gradient-hero);
-  color: white;
+  color: #fff;
   padding: 0.75rem;
   font-weight: 600;
   border: none;
@@ -319,38 +168,14 @@ form input:focus {
   transition: background 0.2s;
 }
 .login-btn:hover {
-   background: var(--ring);
-   color: white;
+  background: var(--ring);
 }
 
-.divider {
-  text-align: center;
-  font-size: 0.8rem;
-  color: #888;
-  margin: 1rem 0;
-  position: relative;
-}
-.divider span {
-  background: #fff;
-  padding: 0 10px;
-  position: relative;
-  z-index: 1;
-}
-.divider::before {
-  content: '';
-  position: absolute;
-  height: 1px;
-  width: 100%;
-  top: 50%;
-  left: 0;
-  background: #ccc;
-  z-index: 0;
-}
-
+/* Register Link */
 .register {
   font-size: 0.85rem;
   text-align: center;
-  margin-top: 1rem; /* tighter */
+  margin-top: 1rem;
 }
 .register a {
   color: #b91c1c;
@@ -361,41 +186,31 @@ form input:focus {
   text-decoration: underline;
 }
 
-/* General messages container */
+/* Messages */
 .messages {
   margin-bottom: 15px;
 }
-
-/* Default alert style */
 .alert {
   padding: 10px 15px;
   border-radius: 6px;
   margin-bottom: 10px;
   font-size: 14px;
 }
-
-/* Success messages (green) */
 .alert-success {
   background-color: #d4edda;
   color: #155724;
   border: 1px solid #c3e6cb;
 }
-
-/* Error messages (red) */
 .alert-error {
   background-color: #f8d7da;
   color: #721c24;
   border: 1px solid #f5c6cb;
 }
-
-/* Info messages (blue) */
 .alert-info {
   background-color: #d1ecf1;
   color: #0c5460;
   border: 1px solid #bee5eb;
 }
-
-/* Warning messages (yellow) */
 .alert-warning {
   background-color: #fff3cd;
   color: #856404;

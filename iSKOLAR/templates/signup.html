@@ -5,31 +5,41 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>iSKOLAR Register</title>
-    <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
+
+  <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
   <link rel="stylesheet" href="{% static 'signup.css' %}">
 </head>
 <body>
 
+  <!-- Background -->
   <div class="background"></div>
 
   <div class="login-wrapper">
-
+    <!-- Logo Section -->
     <div class="logo">
       <span class="text-gradient">iSKOLAR</span><br>
       <p class="subtitle">Join the scholarly community</p>
       <div class="highlight-bar"></div>
     </div>
 
-    <div class="login-card">
-      <!-- X button -->
-      <a href="{% url 'login' %}" class="close-btn">&times;</a>
+    <!-- Registration Card -->
+      <div class="login-card">
+        <a href="{% url 'login' %}" class="close-btn" 
+        style="color: black; text-decoration: none; font-size: 24px; font-weight: bold; padding: 0; border: none; background: none; transition: color 0.2s;"
+        onmouseover="this.style.color='#85efff';" 
+        onmouseout="this.style.color='black';">
+        &times;
+      </a>
+
 
       <h2>Create Your Scholar Account</h2>
       <p class="desc">Fill in the details below to get started</p>
 
-      <p class="desc" style="color: #007bff; font-weight: 500;">
-       After registering, you will receive a verification email. Please verify your email before logging in.
+      <p style="background-color:#f3fbfe; border:1px solid #85efff; color:#44cfdf; padding:0.75rem 1rem; border-radius:8px; font-size:0.9rem; text-align:center; font-weight:450; margin-bottom:1.5rem;">
+        After registering, you will receive a verification email. 
+        Please verify your email before logging in.
       </p>
+
 
       {% if messages %}
         <div class="messages">
@@ -44,41 +54,70 @@
       <form method="POST" action="{% url 'signup' %}">
         {% csrf_token %}
 
-        <!-- First & Last Name -->
-        <label>First Name <span class="required">*</span></label>
-        <input type="text" name="first_name" placeholder="Juan" required />
+        <!-- Name Fields -->
+        <label for="first_name">First Name <span class="required">*</span></label>
+        <input type="text" id="first_name" name="first_name" placeholder="Juan" required>
 
         <label>Last Name <span class="required">*</span></label>
-        <input type="text" name="last_name" placeholder="Santos" required />
+        <input type="text" name="last_name" placeholder = "Santos" required>
 
         <!-- Email -->
-        <label>Email Address <span class="required">*</span></label>
-        <input type="email" name="email" placeholder="studentexample@gmail.com" required />
+        <label for="email">Email Address <span class="required">*</span></label>
+        <input type="email" id="email" name="email" placeholder="studentexample@gmail.com" required>
 
-        <!-- Password -->
-        <label>Password <span class="required">*</span></label>
-        <input type="password" name="password1" placeholder="Create a strong password" required />
+        <!-- Passwords -->
+       <label for="password1">Password <span class="required">*</span></label>
+        <div style="position: relative;">
+          <input type="password" id="password1" name="password1" placeholder="Create a strong password" required
+                style="width: 100%; padding: 10px 40px 10px 10px; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="{% static 'images/hide.png' %}" 
+              onclick="togglePassword('password1', this)" 
+              style="position: absolute; right: 10px; top: 40%; transform: translateY(-50%); width: 15px; height: 15px; cursor: pointer; opacity: 0.8;">
+        </div>
 
-        <!-- Confirm Password -->
-        <label>Confirm Password <span class="required">*</span></label>
-        <input type="password" name="password2" placeholder="Re-enter your password" required />
+        <!-- Confirm Password Field -->
+        <label for="password2">Confirm Password <span class="required">*</span></label>
+        <div style="position: relative;">
+          <input type="password" id="password2" name="password2" placeholder="Re-enter your password" required
+                style="width: 100%; padding: 10px 40px 10px 10px; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="{% static 'images/hide.png' %}" 
+              onclick="togglePassword('password2', this)" 
+              style="position: absolute; right: 10px; top: 40%; transform: translateY(-50%); width: 15px; height: 15px; cursor: pointer; opacity: 0.8;">
+        </div>
 
-        <!-- Terms -->
+        <!-- Terms Agreement -->
         <div class="options">
-          <label><input type="checkbox" required /> I agree to the 
-            <a href="#">Terms of Service</a> & <a href="#">Privacy Policy</a>
+          <label>
+            <input type="checkbox" required>
+            I agree to the <a href="#">Terms of Service</a> & <a href="#">Privacy Policy</a>
           </label>
         </div>
 
-        <!-- Register Button -->
+        <!-- Submit -->
         <button type="submit" class="login-btn">Register Now</button>
 
-        <!-- Already Have Account -->
-        <p class="register">Already a scholar? <a href="{% url 'login' %}">Login here</a></p>
+        <!-- Redirect -->
+        <p class="register">
+          Already a scholar? <a href="{% url 'login' %}">Login here</a>
+        </p>
       </form>
-
     </div>
+         <p style="margin-top: 20px ;font-size: .8rem; color: #484444;"> By creating an account, you agree to our Terms of Service and Privacy Policy</p>
+
   </div>
+
+<script>
+  function togglePassword(id, icon) {
+    const input = document.getElementById(id);
+    if (input.type === "password") {
+      input.type = "text";
+      icon.src = "{% static 'images/show.png' %}"; 
+    } else {
+      input.type = "password";
+      icon.src = "{% static 'images/hide.png' %}"; 
+    }
+  }
+</script>
 
 </body>
 </html>
