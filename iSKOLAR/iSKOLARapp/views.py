@@ -19,13 +19,9 @@ def login_view(request):
         password = request.POST.get("password")
         user = authenticate(request, username=username, password=password)
         if user is None:
-            # Try to create Django user if Supabase verification is complete
-            # (Assume Supabase allows login only if email is verified)
             try:
-                # If login to Supabase is successful, create Django user
                 response = supabase.auth.sign_in_with_password({"email": username, "password": password})
                 if response.user:
-                    # Create Django user now
                     user = User.objects.create_user(username=username, email=username, password=password)
                     login(request, user)
                     return redirect("homepage")
@@ -96,3 +92,12 @@ def forgot_view(request):
     return render(request, "forgot.html")
 def view_profile(request):
     return render(request, 'view-profile.html')
+
+def archives_view(request):
+    return render(request, "archives.html")
+
+def applications_view(request):
+    return render(request, "applications.html")
+
+def saved_scholarships_view(request):
+    return render(request, "saved_scholarships.html")
