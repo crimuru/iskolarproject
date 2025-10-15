@@ -9,6 +9,9 @@ urlpatterns = [
     path("homepage/", views.homepage_view, name="homepage"),
     path("profile/", views.profile_view, name="profile"),
     path('profile/view/', views.view_profile, name='view_profile'),
+    path("archives/", views.archives_view, name="archives"),
+    path("saved_scholarships/", views.saved_scholarships_view, name="saved_scholarships"),
+    path("applications/", views.applications_view, name="applications"),
 
 
     # ✅ password reset URLs

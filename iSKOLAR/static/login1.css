@@ -277,3 +277,28 @@ form input[type="password"] {
   color: #856404;
   border: 1px solid #ffeeba;
 }
+
+/* .password-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.password-container input {
+  width: 100%;
+  padding-right: 2.5rem; /* Space for the eye icon */
+  /* box-sizing: border-box; */
+  /* display: block; */
+/* }
+
+.password-container .toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  color: #555;
+  user-select: none;
+  line-height: 1;
+/* } */ 
