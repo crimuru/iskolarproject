@@ -20,9 +20,13 @@
       <div class="highlight-bar"></div>
     </div>
 
-    <div class="login-card">
-      <!-- X button -->
-      <a href="{% url 'iSKOLARapp' %}" class="close-btn">&times;</a>
+   <div class="login-card">
+      <a href="{% url 'iSKOLARapp' %}" class="close-btn" 
+        style="color: black; text-decoration: none; font-size: 24px; font-weight: bold; padding: 0; border: none; background: none; transition: color 0.2s;"
+        onmouseover="this.style.color='#85efff';" 
+        onmouseout="this.style.color='black';">
+        &times;
+      </a>
 
       <h2>Welcome, Scholars</h2>
       <p class="desc">Sign in to continue your scholarly journey</p>
@@ -43,10 +47,18 @@
         <label>Email Address <span class="required">*</span></label>
         <input type="email" name="username" placeholder="studentexample@gmail.com" required />
 
-        <label>Password <span class="required">*</span></label>
-        <input type="password" name="password" placeholder="Enter your password" required />
+      <label>Password <span class="required">*</span></label>
+      <div style="position: relative;">
+        <input type="password" name="password" id="password" placeholder="Enter your password" required
+              style="width: 100%; padding: 10px 40px 10px 10px; border: 1px solid #ccc; border-radius: 5px;">
+        <img src="{% static 'images/hide.png' %}" 
+            onclick="togglePassword('password', this)" 
+            style="position: absolute; right: 10px; top: 40%; 
+            transform: translateY(-50%); width: 15px; 
+            height: 15px; cursor: pointer; opacity: 0.8;">
+      </div>
 
-        <div class="options">
+        <div class="options" style="text-align: right; margin-top: 5px; margin-bottom: 1rem;">
           <a href="{% url 'password_reset' %}">Forgot password?</a>
         </div>
 
@@ -56,8 +68,22 @@
       </form>
 
     </div>
+     <p style="margin-top: 20px ;font-size: .8rem; color: #484444;"> By signing in, you agree to our Terms of Service and Privacy Policy</p>
   </div>
+ 
 
+<script>
+  function togglePassword(id, icon) {
+    const input = document.getElementById(id);
+    if (input.type === "password") {
+      input.type = "text";
+      icon.src = "{% static 'images/show.png' %}"; 
+    } else {
+      input.type = "password";
+      icon.src = "{% static 'images/hide.png' %}"; 
+    }
+  }
+</script>
 
 </body>
 </html>

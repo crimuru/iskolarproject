@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }
 
 :root {
@@ -47,7 +48,7 @@
 body {
     font-family: var(--font-sans);
     color: var(--foreground);
-    background-color: var(--background);
+    background-color: var(--secondary);
     min-height: 100vh;
 }
 
@@ -59,10 +60,7 @@ body {
     right: 0;
     z-index: 50;
     height: 64px;
-    background-color: var(--background);
-    border-bottom: 1px solid var(--secondary);
-    height: 80px;
-    background-color: rgb(241, 252, 255);
+    background-color: rgba(255, 255, 255, 0.895);
     border-bottom: 1px solid var(--header-border);
 }
 
@@ -88,13 +86,15 @@ body {
 }
 
 .header-center {
+   display: flex;
+    justify-content: center; /* centers the container horizontally */
     flex: 1;
-    max-width: 512px;
-    margin: 0 32px;
 }
 
 .search-container {
     position: relative;
+    width: 100%;
+    max-width: 650px; /* adjust the desired length */
 }
 
 .search-icon {
@@ -110,8 +110,9 @@ body {
 .search-input {
     width: 100%;
     padding: 8px 12px 8px 40px;
-    background-color: rgb(240, 240, 240);
-    border: 1px solid var(--border);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid;
+    border-color: #eee;
     border-radius: 8px;
     font-size: 14px;
     transition: var(--transition-smooth);
@@ -119,8 +120,8 @@ body {
 
 .search-input:focus {
     outline: none;
-    border-color: var(--academic-blue);
-    box-shadow: 0 0 0 2px hsla(214, 100%, 45%, 0.2);
+    border-color:#eee ;
+    box-shadow: 0 0 0 2px hsla(188, 85%, 65%, 0.477);
 }
 
 .header-right {
@@ -385,7 +386,7 @@ body {
 .main-content {
     padding-top: 64px;
     min-height: 100vh;
-    background-color: var(--background);
+    background-color:hsla(210 100% 95%);
 }
 
 .content-container {
@@ -404,27 +405,33 @@ body {
     margin-bottom: 8px;
 }
 
-.main-subtitle {
-    font-size: 20px;
-    color: var(--muted-foreground);
+.welcome-box .main-subtitle {
+    font-size: 1.2rem; 
+    line-height: 1; 
+    margin-top: 1px; 
+    text-align: center; 
+    font-weight: 450;
 }
+
 
 /* Stats Grid */
 .stats-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* only 2 */
-  gap: 24px;
-  margin-bottom: 32px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 1rem; /* small gap between cards */
+    justify-content: center; /* center the grid */
+    margin-bottom: 32px;
 }
-
 
 .stat-card {
     background-color: var(--card);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 24px;
+    padding: 20px;
+    width: 100%; /* make it fill the grid column */
     transition: var(--transition-smooth);
 }
+
 
 .stat-card:hover {
     box-shadow: 0 10px 15px -3px hsla(0, 0%, 0%, 0.1);
@@ -437,12 +444,24 @@ body {
 }
 
 .stat-icon-container {
-    padding: 8px;
-    border-radius: 8px;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(63, 176, 210); 
+    padding: 0; 
 }
 
 .stat-icon-blue {
-    background-color: var(--academic-blue-light);
+    width: 3rem;   /* same width and height */
+    height: 3rem;
+     display: flex;
+    align-items: center;
+    background-color:rgba(114, 223, 237, 0.37);
+    border-radius: 50%;
+    
 }
 
 .stat-icon {
@@ -470,6 +489,9 @@ body {
 
 /* Scholarships Section */
 .scholarships-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* title left, button right */
     margin-bottom: 32px;
 }
 
@@ -477,8 +499,35 @@ body {
     font-size: 32px;
     font-weight: 600;
     color: var(--foreground);
-    margin-bottom: 24px;
+    margin-bottom: 0;           /* remove bottom margin */
 }
+
+.scholarships-section .details {
+    padding: 10px 16px;
+    background-color: transparent;
+    width: 100px;
+    color: rgb(2, 2, 2);
+    border: 1px solid rgb(225, 225, 225); 
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight:bold;
+    outline: none; 
+    box-shadow: none; 
+}
+
+.scholarships-section .details:hover {
+    background-color: rgba(131, 222, 255, 0.558);
+}
+
+.scholarships-section .details:focus {
+    outline: none; 
+    box-shadow: none;
+}
+
+.scholarships-section .details:active {
+    background-color: rgba(0, 187, 255, 0.558);
+}
+
 
 .scholarships-grid {
     display: grid;
@@ -603,11 +652,11 @@ body {
     }
 
     .main-title {
-        font-size: 32px;
+        font-size: 300px;
     }
 
     .main-subtitle {
-        font-size: 18px;
+        font-size: 180px;
     }
 
     .content-container {
@@ -669,27 +718,27 @@ html {
     scroll-behavior: smooth;
 }
 
-.welcome-section {
-  margin-bottom: 32px;
-}
 
 .welcome-box {
-  background: url('images/college.jpg') center/cover no-repeat;
-  border-radius: 16px;
-  padding: 80px 40px;
+  background: url('images/sample.jpg') center/cover no-repeat;
+  border-radius: 10px;
+  padding: 100px 40px;
   text-align: center;
   color: white;
   position: relative;
   overflow: hidden;
+  margin: -20px;
+  margin-bottom: 20px;
+  
 }
 
 .welcome-box::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.2); 
-  backdrop-filter: blur(6px); 
- -webkit-backdrop-filter: blur(6px); 
+  background: rgba(24, 23, 23, 0.505); 
+  backdrop-filter: blur(0.5px); 
+ -webkit-backdrop-filter: blur(0.5px); 
   z-index: 0;
   opacity: 10;
 }
