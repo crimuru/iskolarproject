@@ -72,17 +72,18 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     
-    const searchInput = document.querySelector('.search-input');
+    // --- MAIN SCHOLARSHIP SEARCH ---
+const searchInput = document.querySelector('.search-input');
+if (searchInput) { 
     searchInput.addEventListener('input', function(e) {
         const searchTerm = e.target.value.toLowerCase();
-        console.log('Searching for:', searchTerm);
-        
-        
+        console.log('Searching scholarships for:', searchTerm);
+
         const scholarshipCards = document.querySelectorAll('.scholarship-card');
         scholarshipCards.forEach(card => {
-            const title = card.querySelector('.scholarship-title').textContent.toLowerCase();
-            const description = card.querySelector('.scholarship-description').textContent.toLowerCase();
-            
+            const title = card.querySelector('.scholarship-title')?.textContent.toLowerCase() || '';
+            const description = card.querySelector('.scholarship-description')?.textContent.toLowerCase() || '';
+
             if (title.includes(searchTerm) || description.includes(searchTerm)) {
                 card.style.display = 'block';
             } else {
@@ -90,6 +91,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+}
+
+
 
     
     document.querySelectorAll('.scholarship-card, .stat-card').forEach(card => {
