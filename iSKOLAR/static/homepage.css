@@ -538,8 +538,12 @@ body {
     background-color: var(--card);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 24px;
+    padding: 25px;
+    width: 100%;
     transition: var(--transition-smooth);
+     position: relative;
+  overflow: visible !important; /* allow hover text to appear outside */
+  z-index: 1;
 }
 
 .scholarship-card:hover {
@@ -547,14 +551,14 @@ body {
 }
 
 .scholarship-content {
-    display: flex;
+    
     flex-direction: column;
     gap: 16px;
 }
 
 @media (min-width: 768px) {
     .scholarship-content {
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
         justify-content: space-between;
         gap: 24px;
@@ -565,29 +569,112 @@ body {
     flex: 1;
 }
 
+/* Header: title left, icons right */
+.scholarship-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    position: relative;
+    overflow: visible;
+}
+
+/* Scholarship title */
 .scholarship-title {
     font-size: 24px;
     font-weight: 600;
     color: var(--foreground);
-    margin-bottom: 8px;
+    margin-bottom: 1rem;
+}
+
+/* Icons container */
+.detail-icons {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-right: 20px;
+}
+
+.detail-icon-wrapper {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.detail-icon {
+    width: 30px;
+    height: 30px;
+    color: black;
+    border-radius: 20%;
+    padding: 6px;
+    transition: all 0.3s ease;
+}
+
+.detail-icon-wrapper:hover .detail-icon {
+    background-color:  rgb(29, 167, 227);;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.detail-icon-wrapper::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 140%; 
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Tooltip arrow below */
+.detail-icon-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 120%; 
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #333 transparent; 
+    opacity: 0;
+    z-index: 9999;
+    transition: opacity 0.3s ease;
+}
+
+
+.detail-icon-wrapper:hover::after,
+.detail-icon-wrapper:hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-3px);
+}
+
+.scholarship-card:hover .scholarship-title {
+    color: rgb(29, 167, 227); 
 }
 
 .scholarship-description {
     color: var(--muted-foreground);
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
 }
 
 .scholarship-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
+    display: block;             
     font-size: 14px;
 }
 
 .meta-item {
-    display: flex;
+    display: flex;             
     align-items: center;
-    gap: 4px;
+    gap: 8px;                    
+    margin-bottom: 0.75rem;      
 }
 
 .meta-icon {
@@ -605,8 +692,9 @@ body {
 }
 
 .scholarship-actions {
-    display: flex;
-    gap: 12px;
+
+    gap: 10px;
+    margin-top: 2rem;
 }
 
 /* Button Styles */
@@ -621,29 +709,23 @@ body {
     text-decoration: none;
     display: inline-flex;
     align-items: center;
+    width: 100%; /* ✅ make button span full width */
+    
     justify-content: center;
 }
 
 .btn-outline {
-    background-color: transparent;
+    background-color: rgb(8, 160, 216);
     border-color: var(--border);
-    color: var(--foreground);
+    color: white;
 }
 
 .btn-outline:hover {
-    background-color: var(--accent);
+    background-color:rgba(6, 131, 177, 0.882);
 }
 
-.btn-primary {
-    background-color: var(--academic-blue);
-    color: var(--primary-foreground);
-    border-color: var(--academic-blue);
-}
 
-.btn-primary:hover {
-    background-color: var(--academic-navy);
-    border-color: var(--academic-navy);
-}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -707,7 +789,7 @@ body {
 }
 
 /* Focus and Accessibility */
-button:focus,
+
 input:focus {
     outline: 2px solid var(--ring);
     outline-offset: 2px;

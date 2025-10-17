@@ -94,7 +94,7 @@ body {
 }
 
 .nav a:hover {
-    color: var(--foreground);
+    color: rgba(23, 73, 210, 0.896);
 }
 
 .auth-buttons {
@@ -159,7 +159,7 @@ body {
 }
 
 .btn-outline:hover {
-    background: var(--primary);
+    background: rgba(156, 252, 255, 0.674);
     color: var(--accent-foreground);
     
 }
