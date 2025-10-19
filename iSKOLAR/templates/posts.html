@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scholarship Posts</title>
+  <link rel="stylesheet" href="{% static 'posts.css' %}?v=4">
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo">✨</div>
+    <div class="header-text">
+      <h1>Posts Created</h1>
+      <p>Manage your scholarship posts</p>
+    </div>
+    <div style="display: flex; gap: 10px;">
+      <button class="create-btn" onclick="goToCreatePost()">➕ Create Post</button>
+      <button class="logout-btn" onclick="logout()">🚪 Logout</button>
+    </div>
+  </header>
+
+  <main class="content">
+    <div id="postsContainer" class="posts-grid"></div>
+  </main>
+
+  <div id="confirmDialog" class="dialog hidden">
+    <div class="dialog-box">
+      <h3>Are you sure?</h3>
+      <p>This action cannot be undone. This will permanently delete the scholarship post.</p>
+      <div class="dialog-actions">
+        <button id="cancelBtn" class="cancel-btn">Cancel</button>
+        <button id="deleteBtn" class="delete-btn">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="{% static 'posts2.js' %}?v=9"></script>
+</body>
+</html>

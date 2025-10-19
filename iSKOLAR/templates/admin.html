@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scholarship Portal</title>
+  <link rel="stylesheet" href="{% static 'admin.css' %}">
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      🎓
+    </div>
+    <h1 class="title">Scholarship Portal</h1>
+    <p class="subtitle">
+      Admin dashboard for creating and managing scholarship opportunities
+    </p>
+    <button class="create-btn" onclick="goToCreatePost()">
+      ➕ Create New Scholarship
+    </button>
+  </div>
+
+  <script>
+  function goToCreatePost() {
+    window.location.href = "{% url 'create-post' %}";
+  }
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Scholarship Post</title>
+  <link rel="stylesheet" href="{% static 'create-post.css' %}">
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo">🎓</div>
+    <div class="header-text">
+      <h1>Create Scholarship Post</h1>
+      <p>Fill in details and preview instantly</p>
+    </div>
+    <button class="view-btn" onclick="viewAllPosts()">📋 View All Posts</button>
+  </header>
+
+  <main class="container">
+    <section class="form-section">
+      <input type="hidden" id="editingId" />
+
+      <label>Scholarship Title</label>
+      <input type="text" id="title" placeholder="Enter scholarship title" />
+
+      <label>Description</label>
+      <textarea id="description" rows="4" placeholder="Enter scholarship description"></textarea>
+
+      <label>Location</label>
+      <input type="text" id="location" placeholder="Enter location" />
+
+      <label>Qualifications</label>
+      <textarea id="qualifications" rows="4" placeholder="Enter qualifications"></textarea>
+
+      <label>Deadline</label>
+      <input type="date" id="deadline" />
+
+      <label>Scholarship Link</label>
+      <input type="text" id="scholarshipLink" placeholder="https://example.com" />
+
+      <button id="savePostBtn">Create Scholarship</button>
+    </section>
+
+    <section class="preview-section">
+      <div class="card">
+        <div class="card-header">
+          <h2 id="preview-title">Your Scholarship Title</h2>
+          <span class="badge">Deadline: <span id="preview-deadline">No deadline yet</span></span>
+        </div>
+        <p id="preview-description">Add a compelling description for your scholarship...</p>
+
+        <div class="time-grid">
+          <div class="time-box">
+            <h4>Posted</h4>
+            <span id="preview-posted">--</span>
+          </div>
+          <div class="time-box">
+            <h4>Time Remaining</h4>
+            <span id="preview-remaining">--</span>
+          </div>
+        </div>
+
+        <div class="info">
+          <p><strong>📍 Location:</strong> <span id="preview-location">Your City or Country</span></p>
+          <p><strong>📄 Qualifications:</strong></p>
+          <p id="preview-qualifications">Eligibility criteria will appear here.</p>
+        </div>
+
+        <a href="#" target="_blank" id="preview-link" class="link-btn">🔗 Link for Scholarship</a>
+      </div>
+    </section>
+  </main>
+  
+  <script src="{% static 'create-post2.js' %}?v=6"></script>
+</body>
+</html>
