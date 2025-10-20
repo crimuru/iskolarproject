@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     // === UNIVERSAL STORAGE HANDLERS ===
-    function getPosts() {
-        return JSON.parse(localStorage.getItem("allPosts")) || [];
-    }
+    // function getPosts() {
+    //     return JSON.parse(localStorage.getItem("allPosts")) || [];
+    // }
 
-    function savePosts(posts) {
-        localStorage.setItem("allPosts", JSON.stringify(posts));
-    }
+    // function savePosts(posts) {
+    //     localStorage.setItem("allPosts", JSON.stringify(posts));
+    // }
 
     // === PAGE SETUP ===
     const menuToggleBtn = document.getElementById('menuToggleBtn');
@@ -63,12 +63,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 100);
 
     // === LOAD SCHOLARSHIPS FROM LOCALSTORAGE ===
-    function loadScholarships() {
-        const posts = getPosts();
-        scholarshipsContainer.innerHTML = "";
+async function loadScholarships() {
+    try {
+        const res = await fetch("/get-posts/");
+        const data = await res.json();
+        const container = document.querySelector(".scholarships-grid");
+        container.innerHTML = "";
 
-        if (posts.length === 0) {
-            scholarshipsContainer.innerHTML = `
+        if (!data.success || data.data.length === 0) {
+            container.innerHTML = `
                 <div class="empty">
                     <p>No scholarships available yet.</p>
                 </div>
@@ -76,15 +79,15 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        posts.forEach((post) => {
-            const card = document.createElement('div');
-            card.className = 'scholarship-card';
+        data.data.forEach((post) => {
+            const card = document.createElement("div");
+            card.className = "scholarship-card";
             card.innerHTML = `
                 <h3 class="scholarship-title">${post.title}</h3>
                 <p class="scholarship-description">${post.description}</p>
-                <p><strong>📍 Location:</strong> ${post.location}</p>
-                <p><strong>🗓️ Deadline:</strong> ${post.deadline}</p>
-                <a href="${post.scholarshipLink}" target="_blank" class="view-link">View Scholarship</a>
+                <p><strong>📍 Location:</strong> ${post.location || "Not specified"}</p>
+                <p><strong>🗓️ Deadline:</strong> ${post.deadline || "N/A"}</p>
+                <a href="${post.link || "#"}" target="_blank" class="view-link">View Scholarship</a>
 
                 <div class="card-buttons">
                     <button class="btn-outline save-btn" data-id="${post.id}">Save</button>
@@ -92,9 +95,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     <button class="btn-primary apply-btn" data-id="${post.id}">Apply</button>
                 </div>
             `;
-            scholarshipsContainer.appendChild(card);
+            container.appendChild(card);
         });
+    } catch (error) {
+        console.error("Error loading scholarships:", error);
     }
+}
 
     // === SAVE / ARCHIVE / APPLY ===
     function handleScholarshipAction(type, id) {

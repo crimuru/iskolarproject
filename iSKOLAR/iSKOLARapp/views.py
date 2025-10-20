@@ -9,8 +9,6 @@ from django.http import JsonResponse
 import json
 from django.views.decorators.csrf import csrf_exempt
 
-
-
 # SUPABASE_URL = "https://ionsrqiqludrojmpbhfa.supabase.co"
 # SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlvbnNycWlxbHVkcm9qbXBiaGZhIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1ODgxMjE2NiwiZXhwIjoyMDc0Mzg4MTY2fQ.7aePHEM6jZbTf1Iivrv2n4KxX9LmHSdCu9SDjuAJHEg"
 # supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
@@ -217,7 +215,7 @@ def edit_post_view(request, post_id):
                 "location": data.get("location"),
                 "qualifications": data.get("qualifications"),
                 "deadline": data.get("deadline"),
-                "scholarship_link": data.get("scholarshipLink"),  # ✅ FIXED HERE
+                "scholarship_link": data.get("scholarshipLink"),  
             }).eq("id", post_id).execute()
 
             if not res.data:
