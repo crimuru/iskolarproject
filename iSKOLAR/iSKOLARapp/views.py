@@ -217,7 +217,7 @@ def edit_post_view(request, post_id):
                 "location": data.get("location"),
                 "qualifications": data.get("qualifications"),
                 "deadline": data.get("deadline"),
-                "scholarship_link": data.get("link")
+                "scholarship_link": data.get("scholarshipLink"),  # ✅ FIXED HERE
             }).eq("id", post_id).execute()
 
             if not res.data:
