@@ -846,3 +846,118 @@ html {
   color: var(--background);
   font-weight: 500;
 }
+
+.deadline-tag {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #e9edff;
+  color: #4b56d2;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+
+.scholarship-card {
+  position: relative;
+  background: var(--card);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: var(--transition-smooth);
+}
+
+.scholarship-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Deadline Tag */
+.deadline-tag {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: #f0f4ff;
+  color: #4f46e5;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+/* Title and Description */
+.scholarship-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 8px;
+}
+
+.scholarship-description {
+  color: var(--muted-foreground);
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+/* Timer Section */
+.time-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.time-box {
+  flex: 1;
+  text-align: center;
+  background: #f8f9ff;
+  border: 1px solid #dbe2f9;
+  border-radius: 10px;
+  padding: 10px 0;
+  font-family: monospace;
+  font-weight: 700;
+  color: #4f46e5;
+  transition: color 0.3s;
+}
+
+.time-box.warning {
+  color: #eab308;
+}
+
+.time-box.expired {
+  color: #e11d48;
+}
+
+/* Meta Info */
+.scholarship-meta {
+  margin-top: 10px;
+}
+
+.scholarship-meta p {
+  font-size: 0.9rem;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+/* Link Button */
+.scholarship-link {
+  display: block;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  background: linear-gradient(to right, #4f46e5, #06b6d4);
+  color: white;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-top: 18px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.scholarship-link:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.3);
+}

@@ -19,6 +19,8 @@ window.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   const editId = params.get("id");
 
+  console.log("Edit ID detected:", editId);
+
   if (editId) {
     // Pre-fill form from query parameters
     document.getElementById("title").value = params.get("title") || "";

@@ -2,170 +2,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scholarship Portal - Dashboard</title>
-    <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
-    <meta name="description" content="Academic scholarship management portal for students to discover and apply for educational funding opportunities.">
-    <link rel="stylesheet" href="{% static 'homepage.css' %}?=v4">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scholarship Portal - Dashboard</title>
+  <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
+  <link rel="stylesheet" href="{% static 'homepage.css' %}?v=6">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="header-content">
-            <!-- Left: Logo -->
-            <div class="header-left">
-                <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo-icon">
-            </div>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <div class="header-left">
+        <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo-icon">
+      </div>
 
-            <!-- Center: Search Bar -->
-            <div class="header-center">
-                <div class="search-container">
-                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="11" cy="11" r="8"/>
-                        <path d="m21 21-4.35-4.35"/>
-                    </svg>
-                    <input type="search" placeholder="Search scholarships..." class="search-input">
-                </div>
-            </div>
-
-            <!-- Profile Button -->
-            <div class="header-right">
-                <button class="profile-btn" id="profileToggle">
-                    <img src="{% static 'images/students.jpg' %}" alt="Avatar" class="avatar" style="width:32px;height:32px;border-radius:50%;">
-                </button>
-                <div class="profile-dropdown" id="profileDropdown" style="display: none;">
-                    <div class="profile-header">
-                        <img src="{% static 'images/students.jpg' %}" alt="Avatar" class="avatar" style="width:56px;height:56px;">
-                        <div>
-                            <div class="profile-name">{{ user.first_name }}</div>
-                            <div class="profile-email">{{ user.email }}</div>
-                        </div>
-                    </div>
-                    <ul class="profile-menu">
-                        <li><a href="{% url 'view_profile' %}">View Profile<br><small>See your profile information</small></a></li>
-                        <li><a href="{% url 'profile' %}">Edit Profile<br><small>Update your information</small></a></li>
-                        <li><a href="#">Settings<br><small>Manage your preferences</small></a></li>
-                    </ul>
-                    <hr>
-                    <a href="{% url 'login' %}" class="logout-link"><span class="icon">↩</span> Log Out<br><small>Sign out of your account</small></a>
-                </div>
-            </div>
+      <div class="header-center">
+        <div class="search-container">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="m21 21-4.35-4.35"/>
+          </svg>
+          <input type="search" placeholder="Search scholarships..." class="search-input">
         </div>
-    </header>
+      </div>
 
-    <!-- Sidebar Overlay -->
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
-    <!-- Sidebar -->
-    <nav class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <h2 class="sidebar-title">Menu</h2>
-            <button class="close-btn" id="closeSidebarBtn">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="m18 6-12 12"/>
-                    <path d="m6 6 12 12"/>
-                </svg>
-            </button>
+      <div class="header-right">
+        <button class="profile-btn" id="profileToggle">
+          <img src="{% static 'images/students.jpg' %}" alt="Avatar" class="avatar" style="width:32px;height:32px;border-radius:50%;">
+        </button>
+        <div class="profile-dropdown" id="profileDropdown" style="display: none;">
+          <div class="profile-header">
+            <img src="{% static 'images/students.jpg' %}" alt="Avatar" class="avatar" style="width:56px;height:56px;">
+            <div>
+              <div class="profile-name">{{ user.first_name }}</div>
+              <div class="profile-email">{{ user.email }}</div>
+            </div>
+          </div>
+          <ul class="profile-menu">
+            <li><a href="{% url 'view_profile' %}">View Profile<br><small>See your profile information</small></a></li>
+            <li><a href="{% url 'profile' %}">Edit Profile<br><small>Update your information</small></a></li>
+            <li><a href="#">Settings<br><small>Manage your preferences</small></a></li>
+          </ul>
+          <hr>
+          <a href="{% url 'login' %}" class="logout-link"><span class="icon">↩</span> Log Out<br><small>Sign out of your account</small></a>
         </div>
+      </div>
+    </div>
+  </header>
 
-        <!-- Sidebar Buttons -->
-        <a href="{% url 'homepage' %}" class="sidebar-btn">
-            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">    
-                <circle cx="12" cy="8" r="7"/>
-                <polyline points="8.21,13.89 7,23 12,20 17,23 15.79,13.88"/>
-            </svg>
-            Scholarships
-        </a>
+  <!-- Sidebar Overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-        <a href="{% url 'applications' %}" class="sidebar-btn">
-            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
-                <polyline points="14,2 14,8 20,8"/>
-            </svg>
-            Applications
-        </a>
-
-        <a href="{% url 'archives' %}" class="sidebar-btn">
-            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M3 3h18v4H3z"/>
-                <path d="M3 7v14h18V7z"/>
-                <line x1="10" y1="11" x2="14" y2="11"/>
-            </svg>
-            Archives
-        </a>
-
-        <!-- ✅ New Scholarships Saved -->
-        <a href="{% url 'saved_scholarships' %}" class="sidebar-btn">
-            <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 3h14a2 2 0 0 1 2 2v16l-9-4-9 4V5a2 2 0 0 1 2-2z"/>
-            </svg>
-            Scholarships Saved
-        </a>
-    </nav>
-
-    <!-- Menu Toggle Button -->
-    <button class="menu-toggle" id="menuToggleBtn">
+  <!-- Sidebar -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h2 class="sidebar-title">Menu</h2>
+      <button class="close-btn" id="closeSidebarBtn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="4" x2="20" y1="6" y2="6"/>
-            <line x1="4" x2="20" y1="12" y2="12"/>
-            <line x1="4" x2="20" y1="18" y2="18"/>
+          <path d="m18 6-12 12"/>
+          <path d="m6 6 12 12"/>
         </svg>
-    </button>
+      </button>
+    </div>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="content-container">
-            <div class="welcome-section">
-                <div class="welcome-box">
-                    <h1 class="main-title">Welcome Future Scholars!</h1>
-                    <p class="main-subtitle">Discover and apply for scholarships that match your academic goals.</p>
-                </div>
-            </div>
-            <!-- Stats Cards -->
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-content">
-                        <div class="stat-icon-container stat-icon-blue">
-                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="8" r="7"/>
-                                <polyline points="8.21,13.89 7,23 12,20 17,23 15.79,13.88"/>
-                            </svg>
-                        </div>
-                        <div class="stat-text">
-                            <p class="stat-label">Available</p>
-                            <p class="stat-value">24</p>
-                        </div>
-                    </div>
-                </div>
+    <a href="{% url 'homepage' %}" class="sidebar-btn">Scholarships</a>
+    <a href="{% url 'applications' %}" class="sidebar-btn">Applications</a>
+    <a href="{% url 'archives' %}" class="sidebar-btn">Archives</a>
+    <a href="{% url 'saved_scholarships' %}" class="sidebar-btn">Scholarships Saved</a>
+  </nav>
 
-                <div class="stat-card">
-                    <div class="stat-content">
-                        <div class="stat-icon-container stat-icon-blue">
-                            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
-                                <polyline points="14,2 14,8 20,8"/>
-                            </svg>
-                        </div>
-                        <div class="stat-text">
-                            <p class="stat-label">Applied</p>
-                            <p class="stat-value">8</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <!-- Menu Toggle Button -->
+  <button class="menu-toggle" id="menuToggleBtn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="4" x2="20" y1="6" y2="6"/>
+      <line x1="4" x2="20" y1="12" y2="12"/>
+      <line x1="4" x2="20" y1="18" y2="18"/>
+    </svg>
+  </button>
 
-            <!-- Scholarships Section -->
-            <div class="scholarships-section">
-                <h2 class="section-title">Featured Scholarships</h2>
-                <button class="details">View All</button>
-                </div>
-                <div class="scholarships-grid">
-            </div>
-        </div>            
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="content-container">
+      <div class="welcome-section">
+        <div class="welcome-box">
+          <h1 class="main-title">Welcome Future Scholars!</h1>
+          <p class="main-subtitle">Discover and apply for scholarships that match your academic goals.</p>
         </div>
-    </main>
+      </div>
 
-    <script src="{% static 'script2.js' %}"></script>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <p class="stat-label">Available</p>
+          <p class="stat-value">24</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-label">Applied</p>
+          <p class="stat-value">8</p>
+        </div>
+      </div>
+
+      <div class="scholarships-section">
+        <h2 class="section-title">Featured Scholarships</h2>
+        <button class="details">View All</button>
+      </div>
+
+      <!-- Scholarship Cards (Django preloaded) -->
+      <div class="scholarships-grid">
+        {% for post in posts %}
+          <div class="scholarship-card">
+            <h3 class="scholarship-title">{{ post.title }}</h3>
+            <p class="scholarship-description">{{ post.description }}</p>
+            <p><strong>📍 Location:</strong> {{ post.location }}</p>
+            <p><strong>🗓️ Deadline:</strong> {{ post.deadline }}</p>
+            <a href="{{ post.scholarship_link }}" target="_blank" class="view-link">View Scholarship</a>
+          </div>
+        {% empty %}
+          <div class="empty">
+            <p>No scholarships available yet.</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="{% static 'script2.js' %}?v=7"></script>
 </body>
 </html>
