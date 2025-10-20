@@ -8,10 +8,8 @@ from django.conf import settings
 from django.http import JsonResponse
 import json
 from django.views.decorators.csrf import csrf_exempt
+import requests
 
-# SUPABASE_URL = "https://ionsrqiqludrojmpbhfa.supabase.co"
-# SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlvbnNycWlxbHVkcm9qbXBiaGZhIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1ODgxMjE2NiwiZXhwIjoyMDc0Mzg4MTY2fQ.7aePHEM6jZbTf1Iivrv2n4KxX9LmHSdCu9SDjuAJHEg"
-# supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 url: str = settings.SUPABASE_URL
 key: str = settings.SUPABASE_KEY
 supabase: Client = create_client(url, key)
@@ -135,8 +133,16 @@ def signup_view(request):
     return render(request, "signup.html")
 
 
-def homepage_view(request):
-    return render(request, "homepage.html")
+def homepage(request):
+    try:
+        # Fetch posts directly from your existing Supabase client
+        response = supabase.table("posts").select("*").order("created_at", desc=True).execute()
+        posts = response.data if response.data else []
+    except Exception as e:
+        print("⚠️ Error fetching posts:", e)
+        posts = []
+
+    return render(request, "homepage.html", {"posts": posts})
 
 def profile_view(request):
     return render(request, "profile.html")
@@ -162,6 +168,17 @@ def saved_scholarships_view(request):
 def admin_view(request):
     return render(request, "admin.html")
 
+from django.http import JsonResponse
+
+# def get_scholarships(request):
+#     try:
+#         response = supabase.table("posts").select("*").execute()
+#         posts = response.data if response.data else []
+#         return JsonResponse({"posts": posts})
+#     except Exception as e:
+#         print("⚠️ Error fetching posts:", e)
+#         return JsonResponse({"posts": []}, status=500)
+
 @csrf_exempt
 def create_post_view(request):
     if request.method == "POST":
@@ -183,6 +200,26 @@ def create_post_view(request):
     # ✅ If GET request, render the HTML form page
     return render(request, "create-post.html")
 
+# @csrf_exempt
+# def get_posts_view(request):
+#     try:
+#         data = supabase.table("posts").select("*").order("id", desc=True).execute()
+#         posts = []
+#         for post in data.data:
+#             posts.append({
+#                 "id": post.get("id"),
+#                 "title": post.get("title"),
+#                 "description": post.get("description"),
+#                 "location": post.get("location"),
+#                 "qualifications": post.get("qualifications"),
+#                 "deadline": post.get("deadline"),
+#                 "link": post.get("scholarship_link"),  # ✅ renamed for frontend compatibility
+#                 "created_at": post.get("created_at")
+#             })
+#         return JsonResponse({"success": True, "data": posts})
+#     except Exception as e:
+#         return JsonResponse({"success": False, "error": str(e)})
+
 @csrf_exempt
 def get_posts_view(request):
     try:
@@ -197,10 +234,10 @@ def get_posts_view(request):
                 "qualifications": post.get("qualifications"),
                 "deadline": post.get("deadline"),
                 "link": post.get("scholarship_link"),  # ✅ renamed for frontend compatibility
-                "created_at": post.get("created_at")
             })
         return JsonResponse({"success": True, "data": posts})
     except Exception as e:
+        print("⚠️ Error fetching posts:", e)
         return JsonResponse({"success": False, "error": str(e)})
 
 @csrf_exempt
