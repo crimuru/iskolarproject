@@ -37,10 +37,7 @@ async function fetchPosts() {
         <div class="post-content">
           <div class="post-title">${post.title}</div>
 
-          <div class="time-row">
-            <div class="time-box" id="${postedAgoId}">Posted...</div>
-            <div class="time-box" id="${countdownId}">Remaining...</div>
-          </div>
+          
 
           <div class="post-meta">
             <p><strong>📍 Location:</strong> ${post.location || "Not specified"}</p>

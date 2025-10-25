@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const scholarshipsContainer = document.querySelector('.scholarships-grid');
   const searchInput = document.querySelector('.search-input');
 
+  // Sidebar toggle
   function openSidebar() {
     sidebar.classList.add('active');
     sidebarOverlay.classList.add('active');
@@ -30,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
   closeSidebarBtn?.addEventListener('click', closeSidebar);
   sidebarOverlay?.addEventListener('click', closeSidebar);
 
+  // Profile dropdown
   profileToggle?.addEventListener('click', (e) => {
     e.stopPropagation();
     profileDropdown.style.display =
@@ -40,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
     profileDropdown.style.display = 'none';
   });
 
+  // Fade-in animation
   setTimeout(() => {
     document.querySelector('.welcome-section')?.classList.add('fade-in');
     document.querySelectorAll('.stat-card').forEach((card, index) => {
@@ -47,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }, 100);
 
+  // ✅ Load scholarships (cleaned version)
   async function loadScholarships() {
     scholarshipsContainer.innerHTML = `<div class="empty"><p>Loading scholarships...</p></div>`;
 
@@ -65,18 +69,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     scholarshipsContainer.innerHTML = posts.map((post) => {
       const deadline = post.deadline ? new Date(post.deadline) : null;
-      const postedAt = post.created_at ? new Date(post.created_at) : null;
 
       return `
         <div class="scholarship-card">
           <div class="deadline-tag">Deadline: ${deadline ? deadline.toDateString() : 'N/A'}</div>
           <h3 class="scholarship-title">${post.title}</h3>
           <p class="scholarship-description">${post.description}</p>
-
-          <div class="timer-section">
-            <div class="timer posted" data-posted="${postedAt}">Posted: --</div>
-            <div class="timer remaining" data-deadline="${deadline}">Time Remaining: --</div>
-          </div>
 
           <p><strong>📍 Location:</strong> ${post.location}</p>
           <a href="${post.scholarship_link}" target="_blank" class="view-link">View Scholarship</a>
@@ -88,43 +86,11 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
       `;
     }).join('');
-
-    startTimers();
   }
 
-  function startTimers() {
-    setInterval(() => {
-      const now = new Date();
+  // ✅ Removed startTimers() — not needed anymore
 
-      document.querySelectorAll('.timer.posted').forEach((el) => {
-        const posted = new Date(el.dataset.posted);
-        if (!posted || isNaN(posted)) return;
-        const diff = Math.floor((now - posted) / 1000);
-        const d = Math.floor(diff / 86400);
-        const h = Math.floor((diff % 86400) / 3600);
-        const m = Math.floor((diff % 3600) / 60);
-        const s = diff % 60;
-        el.textContent = `Posted: ${d}d ${h}h ${m}m ${s}s ago`;
-      });
-
-      document.querySelectorAll('.timer.remaining').forEach((el) => {
-        const deadline = new Date(el.dataset.deadline);
-        if (!deadline || isNaN(deadline)) return;
-        const diff = Math.floor((deadline - now) / 1000);
-        if (diff < 0) {
-          el.textContent = `Expired`;
-          el.style.color = "red";
-          return;
-        }
-        const d = Math.floor(diff / 86400);
-        const h = Math.floor((diff % 86400) / 3600);
-        const m = Math.floor((diff % 3600) / 60);
-        const s = diff % 60;
-        el.textContent = `Time Remaining: ${d}d ${h}h ${m}m ${s}s`;
-      });
-    }, 1000);
-  }
-
+  // Handle Save / Archive / Apply
   function handleScholarshipAction(type, id) {
     const cards = Array.from(document.querySelectorAll('.scholarship-card'));
     const postEl = cards.find((c) => c.querySelector(`[data-id="${id}"]`));
@@ -154,6 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  // Button event listeners
   document.addEventListener('click', function (e) {
     if (e.target.matches('.apply-btn')) handleScholarshipAction('apply', e.target.dataset.id);
     if (e.target.matches('.save-btn')) handleScholarshipAction('save', e.target.dataset.id);
@@ -161,6 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (e.target.matches('.sidebar-btn')) closeSidebar();
   });
 
+  // Search filter
   searchInput?.addEventListener('input', function (e) {
     const searchTerm = e.target.value.toLowerCase();
     const cards = document.querySelectorAll('.scholarship-card');
@@ -177,6 +145,7 @@ document.addEventListener('DOMContentLoaded', function () {
   loadScholarships();
 });
 
+// Toast message
 function showToast(message, type = 'info') {
   console.log(`${type.toUpperCase()}: ${message}`);
 }

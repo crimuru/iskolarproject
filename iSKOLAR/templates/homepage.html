@@ -7,13 +7,22 @@
   <title>Scholarship Portal - Dashboard</title>
   <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
   <link rel="stylesheet" href="{% static 'homepage.css' %}?v=6">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 <body>
   <!-- Header -->
   <header class="header">
     <div class="header-content">
       <div class="header-left">
-        <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo-icon">
+        <button class="menu-toggle" id="menuToggleBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="4" x2="20" y1="6" y2="6"/>
+          <line x1="4" x2="20" y1="12" y2="12"/>
+          <line x1="4" x2="20" y1="18" y2="18"/>
+        </svg>
+      </button>
+        <img src="{% static 'images/logo2.png' %}" alt="Logo" class="logo-icon">
       </div>
 
       <div class="header-center">
@@ -65,20 +74,23 @@
       </button>
     </div>
 
-    <a href="{% url 'homepage' %}" class="sidebar-btn">Scholarships</a>
-    <a href="{% url 'applications' %}" class="sidebar-btn">Applications</a>
-    <a href="{% url 'archives' %}" class="sidebar-btn">Archives</a>
-    <a href="{% url 'saved_scholarships' %}" class="sidebar-btn">Scholarships Saved</a>
+          <a href="{% url 'homepage' %}" class="sidebar-btn">
+          <i class="fa-solid fa-graduation-cap"></i> Scholarships
+          </a>
+          <a href="{% url 'applications' %}" class="sidebar-btn">
+            <i class="fa-solid fa-file-lines"></i> Applications
+          </a>
+          <a href="{% url 'archives' %}" class="sidebar-btn">
+            <i class="fa-solid fa-box-archive"></i> Archives
+          </a>
+          <a href="{% url 'saved_scholarships' %}" class="sidebar-btn">
+            <i class="fa-solid fa-bookmark"></i> Scholarships Saved
+          </a>
+
   </nav>
 
   <!-- Menu Toggle Button -->
-  <button class="menu-toggle" id="menuToggleBtn">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <line x1="4" x2="20" y1="6" y2="6"/>
-      <line x1="4" x2="20" y1="12" y2="12"/>
-      <line x1="4" x2="20" y1="18" y2="18"/>
-    </svg>
-  </button>
+  
 
   <!-- Main Content -->
   <main class="main-content">
