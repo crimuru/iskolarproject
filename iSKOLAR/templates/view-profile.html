@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My Profile - ScholarFinder</title>
+<link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
   <link rel="stylesheet" href="{% static 'view_profile.css' %}">
 <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -74,10 +75,26 @@
                         <div class="form-group"><label for="lastName">Last Name *</label><input type="text" id="lastName" value="Johnson" disabled required></div>
 
                         <div class="form-group"><label for="middleName">Middle Name</label><input type="text" id="middleName" value="" disabled></div>
-                        <div class="form-group"><label for="birthdate">Birthdate *</label><input type="text" id="birthdate" value="" placeholder="MM / DD / YYYY" disabled required></div>
+                        <div class="form-group">
+  <label for="birthdate">Birthdate *</label>
+  <input type="date" id="birthdate" value="" disabled required>
+</div>
                         
-                        <div class="form-group"><label for="email">Email *</label><input type="email" id="email" value="alex.johnson@email.com" disabled required></div>
-                        <div class="form-group"><label for="phone">Phone *</label><input type="tel" id="phone" value="+1 (555) 123-4567" disabled required></div>
+                        <div class="form-group">
+  <label for="email">Email *</label>
+  <input type="email" id="email" value="alex.johnson@email.com" disabled required>
+</div>
+                        <div class="form-group">
+  <label for="phone">Phone *</label>
+  <select id="countrySelect">
+  <option value="+63">Philippines (+63)</option>
+  <option value="+1">United States (+1)</option>
+  <option value="+44">United Kingdom (+44)</option>
+</select>
+
+<input type="text" id="phone" placeholder="Enter phone number" />
+
+</div>
 
                         <div class="form-group form-grid-full"><label for="address">Address / Location *</label><input type="text" id="address" value="New York, NY" disabled required></div>
 
