@@ -4,6 +4,35 @@ const SUPABASE_URL = "https://ionsrqiqludrojmpbhfa.supabase.co";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlvbnNycWlxbHVkcm9qbXBiaGZhIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1ODgxMjE2NiwiZXhwIjoyMDc0Mzg4MTY2fQ.7aePHEM6jZbTf1Iivrv2n4KxX9LmHSdCu9SDjuAJHEg";
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
+// Countdown timer function
+function startDeadlineTimer(elementId, endDate) {
+  const deadlineEl = document.getElementById(elementId);
+  if (!deadlineEl) return;
+
+  const targetDate = new Date(endDate).getTime();
+
+  function updateTimer() {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    if (distance <= 0) {
+      deadlineEl.innerHTML = `<i class="fa-regular fa-calendar-check"></i> Deadline Passed`;
+      clearInterval(interval);
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    deadlineEl.innerHTML = `<i class="fa-regular fa-calendar-check"></i> Due in ${days}d ${hours}h ${minutes}m ${seconds}s`;
+  }
+
+  updateTimer(); // initial call
+  const interval = setInterval(updateTimer, 1000);
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   const menuToggleBtn = document.getElementById('menuToggleBtn');
   const closeSidebarBtn = document.getElementById('closeSidebarBtn');
@@ -20,7 +49,6 @@ document.addEventListener('DOMContentLoaded', function () {
     sidebarOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
-
   function closeSidebar() {
     sidebar.classList.remove('active');
     sidebarOverlay.classList.remove('active');
@@ -37,7 +65,6 @@ document.addEventListener('DOMContentLoaded', function () {
     profileDropdown.style.display =
       profileDropdown.style.display === 'block' ? 'none' : 'block';
   });
-
   document.addEventListener('click', () => {
     profileDropdown.style.display = 'none';
   });
@@ -50,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }, 100);
 
-  // ✅ Load scholarships (cleaned version)
+  // Load scholarships
   async function loadScholarships() {
     scholarshipsContainer.innerHTML = `<div class="empty"><p>Loading scholarships...</p></div>`;
 
@@ -72,77 +99,96 @@ document.addEventListener('DOMContentLoaded', function () {
 
       return `
         <div class="scholarship-card">
-          <div class="deadline-tag">Deadline: ${deadline ? deadline.toDateString() : 'N/A'}</div>
-          <h3 class="scholarship-title">${post.title}</h3>
-          <p class="scholarship-description">${post.description}</p>
-
-          <p><strong>📍 Location:</strong> ${post.location}</p>
-          <a href="${post.scholarship_link}" target="_blank" class="view-link">View Scholarship</a>
-          <div class="card-buttons">
-            <button class="btn-outline save-btn" data-id="${post.id}">Save</button>
-            <button class="btn-outline archive-btn" data-id="${post.id}">Archive</button>
-            <button class="btn-primary apply-btn" data-id="${post.id}">Apply</button>
+          <div class="card-header">
+            <h3 class="scholarship-title">${post.title}</h3>
+            <div class="card-buttons">
+              <div class="tooltip">
+                <button class="icon-btn">
+                  <i class="fa-regular fa-bookmark"></i>
+                </button>
+                <span class="tooltiptext">Save this scholarship</span>
+              </div>
+              <div class="tooltip">
+                <button class="icon-btn">
+                  <i class="fa-solid fa-box-archive"></i>
+                </button>
+                <span class="tooltiptext">Archive this scholarship</span>
+              </div>
+              <div class="tooltip">
+                <button class="icon-btn">
+                  <i class="fa-regular fa-circle-check"></i>
+                </button>
+                <span class="tooltiptext">Apply for this scholarship</span>
+              </div>
+            </div>
           </div>
+
+          <p class="scholarship-description">${post.description}</p>
+          <p><i class="fa-solid fa-location-dot"></i> Location: ${post.location}</p>
+          <div class="deadline-tag" id="deadline-${post.id}">
+            <i class="fa-regular fa-calendar-check"></i> Due: ${deadline ? deadline.toDateString() : 'N/A'}
+          </div>
+
+          <a href="${post.scholarship_link}" target="_blank" class="view-link">View Scholarship Details</a>
         </div>
       `;
     }).join('');
+
+    // Start countdown timers for each card
+    posts.forEach(post => {
+      if (post.deadline) {
+        startDeadlineTimer(`deadline-${post.id}`, post.deadline);
+      }
+    });
   }
 
-  // ✅ Removed startTimers() — not needed anymore
-
-  // Handle Save / Archive / Apply
-  function handleScholarshipAction(type, id) {
-    const cards = Array.from(document.querySelectorAll('.scholarship-card'));
-    const postEl = cards.find((c) => c.querySelector(`[data-id="${id}"]`));
-    if (!postEl) return;
-
-    const post = {
-      id,
-      title: postEl.querySelector('.scholarship-title')?.textContent || '',
-      description: postEl.querySelector('.scholarship-description')?.textContent || '',
-    };
-
-    const keyMap = {
-      save: 'savedScholarships',
-      archive: 'archivedScholarships',
-      apply: 'appliedScholarships',
-    };
-
-    const storageKey = keyMap[type];
-    let list = JSON.parse(localStorage.getItem(storageKey)) || [];
-
-    if (!list.find((p) => p.id === post.id)) {
-      list.push(post);
-      localStorage.setItem(storageKey, JSON.stringify(list));
-      showToast(`${post.title} added to ${type}d scholarships!`, 'success');
-    } else {
-      showToast(`${post.title} is already in ${type}d scholarships.`, 'warning');
-    }
-  }
-
-  // Button event listeners
-  document.addEventListener('click', function (e) {
-    if (e.target.matches('.apply-btn')) handleScholarshipAction('apply', e.target.dataset.id);
-    if (e.target.matches('.save-btn')) handleScholarshipAction('save', e.target.dataset.id);
-    if (e.target.matches('.archive-btn')) handleScholarshipAction('archive', e.target.dataset.id);
-    if (e.target.matches('.sidebar-btn')) closeSidebar();
-  });
+  loadScholarships();
 
   // Search filter
   searchInput?.addEventListener('input', function (e) {
-    const searchTerm = e.target.value.toLowerCase();
-    const cards = document.querySelectorAll('.scholarship-card');
-    cards.forEach((card) => {
-      const title = card.querySelector('.scholarship-title')?.textContent.toLowerCase() || '';
-      const description = card.querySelector('.scholarship-description')?.textContent.toLowerCase() || '';
-      card.style.display =
-        title.includes(searchTerm) || description.includes(searchTerm)
-          ? 'block'
-          : 'none';
-    });
+  const searchTerm = e.target.value.toLowerCase();
+  const cards = document.querySelectorAll('.scholarship-card');
+  let anyVisible = false;
+
+  cards.forEach((card) => {
+    const title = card.querySelector('.scholarship-title')?.textContent.toLowerCase() || '';
+    const description = card.querySelector('.scholarship-description')?.textContent.toLowerCase() || '';
+
+    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+      card.style.display = 'block';
+      anyVisible = true;
+    } else {
+      card.style.display = 'none';
+    }
   });
 
-  loadScholarships();
+  // Handle "No scholarships found" message
+  let noMsg = document.querySelector('.no-scholarships');
+  if (!anyVisible) {
+    if (!noMsg) {
+      const msg = document.createElement('div');
+      msg.className = 'no-scholarships';
+      msg.innerHTML = '<p>No scholarships found.</p>';
+      scholarshipsContainer.appendChild(msg);
+    }
+  } else {
+    if (noMsg) noMsg.remove();
+  }
+});
+
+
+  // Handle Save / Archive / Apply (currently placeholder)
+  function handleScholarshipAction(type, id) {
+    showToast(`${type} clicked for post ${id}`, 'info');
+  }
+
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('.apply-btn')) handleScholarshipAction('apply', e.target.dataset.id);
+    if (e.target.closest('.save-btn')) handleScholarshipAction('save', e.target.dataset.id);
+    if (e.target.closest('.archive-btn')) handleScholarshipAction('archive', e.target.dataset.id);
+    if (e.target.matches('.sidebar-btn')) closeSidebar();
+  });
+
 });
 
 // Toast message

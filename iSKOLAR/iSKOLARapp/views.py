@@ -135,14 +135,14 @@ def signup_view(request):
 
 def homepage(request):
     try:
-        # Fetch posts directly from your existing Supabase client
-        response = supabase.table("posts").select("*").order("created_at", desc=True).execute()
+        response = supabase.table("posts").select("*").order("id", desc=True).execute()
         posts = response.data if response.data else []
     except Exception as e:
         print("⚠️ Error fetching posts:", e)
         posts = []
 
     return render(request, "homepage.html", {"posts": posts})
+
 
 def profile_view(request):
     return render(request, "profile.html")
